@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentHome"
+    android:padding="16dp">
+
+    <!-- Header Section -->
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical"-->
+<!--        android:layout_marginBottom="16dp">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/guest_name"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Hello, Mr. Guest"-->
+<!--            android:textSize="24sp"-->
+<!--            android:textStyle="bold" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Welcome to Guest Home" />-->
+<!--    </LinearLayout>-->
+
+<!--    &lt;!&ndash; Room Section &ndash;&gt;-->
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical">-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Room"-->
+<!--            android:textSize="20sp"-->
+<!--            android:textStyle="bold"-->
+<!--            android:layout_marginBottom="8dp" />-->
+
+<!--        &lt;!&ndash; Bedroom 1 &ndash;&gt;-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical"-->
+<!--            android:background="@android:color/holo_blue_light"-->
+<!--            android:padding="8dp"-->
+<!--            android:layout_marginBottom="8dp">-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Bedroom 1 (High Temp.)" />-->
+
+<!--            <SeekBar-->
+<!--                android:id="@+id/seekBarBedroom1"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:max="30"-->
+<!--                android:progress="17" />-->
+
+<!--            <ToggleButton-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textOff="OFF"-->
+<!--                android:textOn="ON"-->
+<!--                android:layout_marginTop="8dp"/>-->
+<!--        </LinearLayout>-->
+
+<!--        &lt;!&ndash; Bedroom 2 &ndash;&gt;-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical"-->
+<!--            android:background="@drawable/shapegradient"-->
+<!--            android:padding="8dp"-->
+<!--            android:layout_marginBottom="8dp">-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Bedroom 2 (Low Temp.)" />-->
+
+<!--            <SeekBar-->
+<!--                android:id="@+id/seekBarBedroom2"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:max="30"-->
+<!--                android:progress="18" />-->
+
+<!--            <ToggleButton-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textOff="OFF"-->
+<!--                android:textOn="ON"-->
+<!--                android:layout_marginTop="8dp"/>-->
+<!--        </LinearLayout>-->
+
+<!--        &lt;!&ndash; Living Room &ndash;&gt;-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical"-->
+<!--            android:background="@android:color/holo_blue_light"-->
+<!--            android:padding="8dp"-->
+<!--            android:layout_marginBottom="8dp">-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Living Room (Normal Temp.)" />-->
+
+<!--            <SeekBar-->
+<!--                android:id="@+id/seekBarLivingRoom"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:max="30"-->
+<!--                android:progress="24" />-->
+
+<!--            <ToggleButton-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textOff="OFF"-->
+<!--                android:textOn="ON"-->
+<!--                android:layout_marginTop="8dp"/>-->
+<!--        </LinearLayout>-->
+<!--    </LinearLayout>-->
+
+<!--    &lt;!&ndash; Tips for Saving Energy &ndash;&gt;-->
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:text="Tips for Saving Energy"-->
+<!--        android:textSize="20sp"-->
+<!--        android:textStyle="bold" />-->
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:text="1. Turn on the AC only when necessary." />-->
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="2. Turn off the AC immediately when not in use." />-->
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="3. You can always monitor energy consumption in 'Energy' menu." />-->
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="4. Do regular AC maintenance, such as cleaning it." />-->
+</FrameLayout>
