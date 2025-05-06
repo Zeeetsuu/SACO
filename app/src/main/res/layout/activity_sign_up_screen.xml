@@ -22,7 +22,7 @@
         android:id="@+id/signUpScreenText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="240dp"
+        android:layout_marginTop="190dp"
         android:fontFamily="sans-serif-black"
         android:text="@string/SignUpScreenSignUp"
         android:textSize="24sp"
@@ -48,8 +48,8 @@
         android:id="@+id/signUpScreenInputEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:width="390dp"
+        android:layout_marginTop="8dp"
+        android:width="350dp"
         android:autofillHints=""
         android:background="@drawable/inputbackground"
         android:ems="10"
@@ -81,8 +81,8 @@
         android:inputType="text"
         android:hint="@string/signUpScreenUsernameInput"
         android:background="@drawable/inputbackground"
-        android:width="390dp"
-        android:layout_marginTop="12dp"
+        android:width="350dp"
+        android:layout_marginTop="8dp"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -106,7 +106,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:width="390dp"
+        android:width="350dp"
         android:autofillHints=""
         android:background="@drawable/inputbackground"
         android:ems="10"
@@ -137,7 +137,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:width="390dp"
+        android:width="350dp"
         android:autofillHints=""
         android:background="@drawable/inputbackground"
         android:ems="10"
@@ -160,23 +160,23 @@
         app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.888"
+        app:layout_constraintHorizontal_bias="0.904"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.880"
+        app:layout_constraintVertical_bias="0.859"
         tools:ignore="DuplicateSpeakableTextCheck" />
 
     <TextView
         android:id="@+id/signUpScreenText6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="85dp"
+        android:layout_marginStart="64dp"
         android:minHeight="48dp"
         android:text="@string/already_have_an_account"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.99" />
+        app:layout_constraintVertical_bias="0.951" />
 
     <TextView
         android:id="@+id/signUpScreenText7"
@@ -190,6 +190,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/signUpScreenText6"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.99" />
+        app:layout_constraintVertical_bias="0.951" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

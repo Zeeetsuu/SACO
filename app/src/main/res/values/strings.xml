@@ -16,4 +16,10 @@
     <string name="re_enter_your_password">Re-enter your password</string>
     <string name="already_have_an_account">Already have an account?</string>
     <string name="login_here">Login here!</string>
+    <string name="home">Home</string>
+    <string name="energy">Energy</string>
+    <string name="schedule">Schedule</string>
+    <string name="settings">Settings</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
