@@ -30,7 +30,6 @@ public class HomeScreen extends AppCompatActivity {
         // Initialize the fragment map
         initializeFragmentMap();
 
-        // Load the default fragment only if savedInstanceState is null
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.homeScreenFrame, new FragmentHome()).commit();
         }

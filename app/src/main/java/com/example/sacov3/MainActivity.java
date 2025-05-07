@@ -19,15 +19,10 @@ public class MainActivity extends AppCompatActivity {
         long splashDuration = 3000; // 3 seconds
 
         // Use a Handler with a delayed Runnable to start the second activity
-        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(MainActivity.this, LoginScreen.class);
-                startActivity(intent);
-
-                // Close the splash screen activity
-                finish();
-            }
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+            Intent intent = new Intent(MainActivity.this, LoginScreen.class);
+            startActivity(intent);
+            finish();
         }, splashDuration);
     }
 }
