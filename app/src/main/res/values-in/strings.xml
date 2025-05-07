@@ -22,4 +22,15 @@
     <string name="energy">Energi</string>
     <string name="schedule">Jadwal</string>
     <string name="settings">Pengaturan</string>
+    <string name="hello_blank_fragment">what</string>
+    <string name="security">Keamanan</string>
+    <string name="log_out">Log Out</string>
+    <string name="contact_us">Hubungi Kami</string>
+    <string name="about_us">Tentang Kami</string>
+    <string name="metric">Metrik</string>
+    <string name="language">Bahasa</string>
+    <string name="other">Lainnya</string>
+    <string name="two_step_verification">Verifikasi Dua Langkah</string>
+    <string name="change_password">Ubah Password</string>
+    <string name="delete_account">Hapus Akun</string>
 </resources>
