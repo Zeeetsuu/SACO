@@ -8,13 +8,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
@@ -22,16 +19,9 @@ import java.util.Map;
 
 
 public class SignUpScreen extends AppCompatActivity {
-
-    // Tag for logging messages
-    private static final String TAG = "SignUpScreen";
-
-    // Firebase Authentication instance
+    private static final String TAG = "SignUpScreen"; // Tag for logging messages
     private FirebaseAuth mAuth;
-
-    // Firebase Realtime Database reference (uncomment if you're saving username here)
     private DatabaseReference mDatabase;
-
     private EditText emailEditText;
     private EditText usernameEditText;
     private EditText passwordEditText;
@@ -44,14 +34,12 @@ public class SignUpScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_screen);
 
-        // --- Initialize Firebase Authentication ---
+        // Firebase Authentication
         mAuth = FirebaseAuth.getInstance();
 
-        // --- Initialize Firebase Realtime Database reference (uncomment if saving username) ---
+        // Firebase Realtime Database
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-
-        // --- Get references to your UI elements - USING IDs FROM YOUR XML ---
         emailEditText = findViewById(R.id.signUpScreenInputEmail);
         usernameEditText = findViewById(R.id.signUpScreenUsernameInput);
         passwordEditText = findViewById(R.id.signUpScreenInputPassword);
@@ -63,7 +51,7 @@ public class SignUpScreen extends AppCompatActivity {
         // statusTextView = findViewById(R.id.statusTextView); // Example ID - uncomment and replace if you have one
 
 
-        // --- Set up the click listener for your Sign Up button ---
+        //  Sign up button click listener
         signUpButton.setOnClickListener(v -> {
             // Get input values from the EditText fields
             String email = emailEditText.getText().toString().trim();
@@ -71,13 +59,13 @@ public class SignUpScreen extends AppCompatActivity {
             String password = passwordEditText.getText().toString().trim();
             String confirmPassword = confirmPasswordEditText.getText().toString().trim();
 
-            // --- Input Validation ---
+            // Input validation
             if (TextUtils.isEmpty(email) || TextUtils.isEmpty(username) || TextUtils.isEmpty(password) || TextUtils.isEmpty(confirmPassword)) {
                 Toast.makeText(SignUpScreen.this, "All fields are required.",
                         Toast.LENGTH_SHORT).show();
                 // Optional: update status TextView
                 // if (statusTextView != null) statusTextView.setText("All fields are required.");
-                return; // Stop here if any field is empty
+                return;
             }
 
             // Check if password and confirm password match
@@ -86,11 +74,10 @@ public class SignUpScreen extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
                 // Optional: update status TextView
                 // if (statusTextView != null) statusTextView.setText("Passwords do not match.");
-                return; // Stop here if passwords don't match
+                return;
             }
 
-            // Optional: Add more complex password validation (e.g., length)
-            if (password.length() < 6) { // Firebase requires at least 6 characters by default
+            if (password.length() < 6) {
                 Toast.makeText(SignUpScreen.this, "Password must be at least 6 characters long.",
                         Toast.LENGTH_SHORT).show();
                 // Optional: update status TextView
@@ -98,18 +85,14 @@ public class SignUpScreen extends AppCompatActivity {
                 return;
             }
 
-            // --- Call Firebase Authentication to create the user ---
-            // We only use email and the *first* password field for Auth creation
+
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(SignUpScreen.this, task -> {
                         if (task.isSuccessful()) {
                             // Sign up success!
                             Log.d(TAG, "createUserWithEmail:success");
 
-                            // Get the newly created user object
                             FirebaseUser user = mAuth.getCurrentUser();
-
-                            // Display a success message
                             Toast.makeText(SignUpScreen.this, "Sign up successful!",
                                     Toast.LENGTH_SHORT).show();
 
@@ -117,29 +100,51 @@ public class SignUpScreen extends AppCompatActivity {
                             // if (statusTextView != null) statusTextView.setText("Sign up successful!");
 
 
-                            // --- Get the UID and save username/email to Realtime Database ---
+                            // get UID from firebase
                             if (user != null) {
                                 String uid = user.getUid();
                                 Log.d(TAG, "New user created with UID: " + uid);
-
-                                // --- Realtime Database Step: Save User Data (Username, Email) ---
                                 Map<String, Object> userData = new HashMap<>();
                                 userData.put("username", username); // Use the username from the input field
                                 userData.put("email", email); // Save email if needed
 
                                 mDatabase.child("users").child(uid).setValue(userData)
-                                    .addOnSuccessListener(aVoid -> Log.d(TAG, "User data saved to RTDB for " + uid))
-                                    .addOnFailureListener(e -> Log.w(TAG, "Failed to save user data to RTDB for " + uid, e));
+                                        .addOnSuccessListener(aVoid -> Log.d(TAG, "User data saved to RTDB for " + uid))
+                                        .addOnFailureListener(e -> Log.w(TAG, "Failed to save user data to RTDB for " + uid, e));
 
+                                // Set display name in firebase auth
+                                UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                        .setDisplayName(username)
+                                        .build();
 
-                                Intent intent = new Intent(SignUpScreen.this, LoginScreen.class);
-                                startActivity(intent);
-                                finish();
+                                user.updateProfile(profileUpdates)
+                                        .addOnCompleteListener(profileTask -> {
+                                            if (profileTask.isSuccessful()) {
+                                                Log.d(TAG, "User profile updated (display name set in Auth).");
+                                                // Now that the profile is updated in Auth, navigate the user
+                                                Intent intent = new Intent(SignUpScreen.this, LoginScreen.class);
+                                                startActivity(intent);
+                                                finish(); // Finish SignUpScreen so they can't go back to it
+
+                                            } else {
+                                                Log.w(TAG, "Error updating user profile (Auth).", profileTask.getException());
+                                                // Handle the error setting the profile.
+                                                // Even if setting the display name fails, you might still want
+                                                // to let the user proceed so they aren't stuck.
+                                                Intent intent = new Intent(SignUpScreen.this, LoginScreen.class);
+                                                startActivity(intent);
+                                                finish();
+                                            }
+                                        });
 
 
                             } else {
                                 // Should not happen if task is successful, but good practice
                                 Log.w(TAG, "createUserWithEmail:success but user is null?");
+                                // Navigate anyway, or show an error? Depends on desired flow.
+                                Intent intent = new Intent(SignUpScreen.this, LoginScreen.class);
+                                startActivity(intent);
+                                finish();
                             }
 
 
@@ -173,7 +178,7 @@ public class SignUpScreen extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
             Log.d(TAG, "onStart: User already signed in with UID " + currentUser.getUid());
-            Intent intent = new Intent(SignUpScreen.this, LoginScreen.class);
+            Intent intent = new Intent(SignUpScreen.this, HomeScreen.class);
             startActivity(intent);
             finish();
         } else {

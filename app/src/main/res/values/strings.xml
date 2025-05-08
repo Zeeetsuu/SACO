@@ -35,4 +35,8 @@
     <string name="two_step_verification">Two Step Verification</string>
     <string name="change_password">Change Password</string>
     <string name="delete_account">Delete Account</string>
+    <string name="confirmlogout">Confirm Logout</string>
+    <string name="areyousure">Are you sure you want to Logout?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>
