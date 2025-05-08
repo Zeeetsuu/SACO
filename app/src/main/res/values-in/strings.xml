@@ -33,4 +33,8 @@
     <string name="two_step_verification">Verifikasi Dua Langkah</string>
     <string name="change_password">Ubah Password</string>
     <string name="delete_account">Hapus Akun</string>
+    <string name="confirmlogout">Konfirmasi Logout</string>
+    <string name="areyousure">Apakah anda yakin ingin Logout?</string>
+    <string name="yes">Ya</string>
+    <string name="no">Tidak</string>
 </resources>
