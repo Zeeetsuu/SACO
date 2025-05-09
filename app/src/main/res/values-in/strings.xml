@@ -37,4 +37,18 @@
     <string name="areyousure">Apakah anda yakin ingin Logout?</string>
     <string name="yes">Ya</string>
     <string name="no">Tidak</string>
+    <string name="hello_mr_guest">Halo, Mr. Guest</string>
+    <string name="welcome_to_guest_home">Selamat datang di Rumah Guest</string>
+    <string name="welcome_format">Selamat datang di Rumah %s\'s</string>
+    <string name="room">Ruangan</string>
+    <string name="bedroom_1">Kamar tidur 1</string>
+    <string name="room_is_hot">(Ruangan panas)</string>
+    <string name="bedroom_2">Kamar tidur 2</string>
+    <string name="room_is_cold">(Ruangan dingin)</string>
+    <string name="living_room">Ruang tamu</string>
+    <string name="tips_for_saving_energy">Tips untuk menghemat energi</string>
+    <string name="tip1">Tip 1: Hanya nyalakan AC apabila diperlukan</string>
+    <string name="tip2">Tip 2: Matikan AC apabila tidak digunakan</string>
+    <string name="tip3">Tip 3: Lakukan perawatan AC secara rutin, seperti membersihkannya</string>
+    <string name="hello_format">Halo, %s</string>
 </resources>

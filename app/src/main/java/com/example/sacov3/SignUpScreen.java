@@ -121,17 +121,13 @@ public class SignUpScreen extends AppCompatActivity {
                                         .addOnCompleteListener(profileTask -> {
                                             if (profileTask.isSuccessful()) {
                                                 Log.d(TAG, "User profile updated (display name set in Auth).");
-                                                // Now that the profile is updated in Auth, navigate the user
-                                                Intent intent = new Intent(SignUpScreen.this, LoginScreen.class);
+                                                Intent intent = new Intent(SignUpScreen.this, HomeScreen.class);
                                                 startActivity(intent);
-                                                finish(); // Finish SignUpScreen so they can't go back to it
+                                                finish();
 
                                             } else {
                                                 Log.w(TAG, "Error updating user profile (Auth).", profileTask.getException());
-                                                // Handle the error setting the profile.
-                                                // Even if setting the display name fails, you might still want
-                                                // to let the user proceed so they aren't stuck.
-                                                Intent intent = new Intent(SignUpScreen.this, LoginScreen.class);
+                                                Intent intent = new Intent(SignUpScreen.this, HomeScreen.class);
                                                 startActivity(intent);
                                                 finish();
                                             }
@@ -139,17 +135,15 @@ public class SignUpScreen extends AppCompatActivity {
 
 
                             } else {
-                                // Should not happen if task is successful, but good practice
                                 Log.w(TAG, "createUserWithEmail:success but user is null?");
-                                // Navigate anyway, or show an error? Depends on desired flow.
-                                Intent intent = new Intent(SignUpScreen.this, LoginScreen.class);
+                                Intent intent = new Intent(SignUpScreen.this, HomeScreen.class);
                                 startActivity(intent);
                                 finish();
                             }
 
 
                         } else {
-                            // If sign up fails, display a message to the user.
+                            // sign up failed section
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
                             String errorMessage = "Sign up failed.";
                             if (task.getException() != null) {
@@ -166,7 +160,7 @@ public class SignUpScreen extends AppCompatActivity {
         });
 
         loginLinkTextView.setOnClickListener(v -> {
-            Intent intent = new Intent(SignUpScreen.this, LoginScreen.class);
+            Intent intent = new Intent(SignUpScreen.this, HomeScreen.class);
             startActivity(intent);
         });
     }

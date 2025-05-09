@@ -35,9 +35,9 @@ public class LoginScreen extends AppCompatActivity {
         loginButton = findViewById(R.id.loginScreenButton);
         signUpLinkTextView = findViewById(R.id.loginScreenText5);
 
-        // On click listener for the login button
+        // On click listener for login button
         loginButton.setOnClickListener(v -> {
-            // Get email and password from the EditText fields
+            // Get user email and password
             String email = emailEditText.getText().toString().trim();
             String password = passwordEditText.getText().toString().trim();
 
@@ -85,7 +85,6 @@ public class LoginScreen extends AppCompatActivity {
                                 //     });
 
                             } else {
-                                // Should not happen if task is successful, but good practice
                                 Log.w(TAG, "signInWithEmail:success but user is null?");
                             }
 

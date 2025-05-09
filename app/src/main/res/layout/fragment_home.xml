@@ -1,78 +1,312 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" android:padding="16dp" tools:context=".FragmentHome">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fraghomeLinear1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--  Header (Mr. Guest)  -->
     <LinearLayout
+        android:id="@+id/fraghomeLinear2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <!--  Header Section  -->
+        android:layout_marginTop="48dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginBottom="24dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
         <LinearLayout
-            android:layout_width="match_parent"
+            android:id="@+id/fraghomeLinear3"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <LinearLayout
+            android:layout_marginStart="16dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/fraghomeHelloText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Hello, Mr. Guest"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Welcome to Guest Home"/>
-
-            </LinearLayout>
-        </LinearLayout>
-
-        <!--  Room Section  -->
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8dp" android:text="Room" android:textSize="20sp" android:textStyle="bold"/>
-            <!--  Bedroom 1  -->
-            <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="8dp" android:layout_margin="8dp" app:cardCornerRadius="16dp" app:cardElevation="12dp">
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/shapegradient" android:orientation="vertical" android:padding="8dp">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Bedroom 1 (High Temp.)"/>
-                    <SeekBar android:id="@+id/seekBarBedroom1" android:layout_width="match_parent" android:layout_height="wrap_content" android:max="30" android:progress="17"/>
-                    <ToggleButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:textOff="OFF" android:textOn="ON"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <!--  Bedroom 2  -->
-            <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="8dp" android:layout_margin="8dp" app:cardCornerRadius="16dp" app:cardElevation="12dp">
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/shapegradient" android:orientation="vertical" android:padding="8dp">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Bedroom 2 (Low Temp.)"/>
-                    <SeekBar android:id="@+id/seekBarBedroom2" android:layout_width="match_parent" android:layout_height="wrap_content" android:max="30" android:progress="18"/>
-                    <ToggleButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:textOff="OFF" android:textOn="ON"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <!--  Living Room  -->
-            <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="8dp" android:layout_margin="8dp" app:cardCornerRadius="16dp" app:cardElevation="12dp">
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/shapegradient" android:orientation="vertical" android:padding="8dp">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Living Room (Normal Temp.)"/>
-                    <SeekBar android:id="@+id/seekBarLivingRoom" android:layout_width="match_parent" android:layout_height="wrap_content" android:max="30" android:progress="24"/>
-                    <ToggleButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:textOff="OFF" android:textOn="ON"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
-        <!--  Tips for Saving Energy  -->
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:orientation="vertical">
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8dp" android:text="Tips for Saving Energy" android:textSize="20sp" android:textStyle="bold"/>
-            <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="8dp" app:cardCornerRadius="16dp" app:cardElevation="12dp">
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/shapegradient" android:orientation="vertical" android:padding="24dp">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tip 1: Turn on the AC only when necessary."/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="Tip 2: Turn off the AC immediately when not in use."/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="Tip 3: Do regular AC maintanance, such as cleaning it."/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                android:text="@string/hello_mr_guest"
+                android:textColor="@color/black"
+                android:textSize="19sp"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/fraghomeWelcomeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/welcome_to_guest_home"/>
         </LinearLayout>
     </LinearLayout>
-</ScrollView>
+
+    <!--  Room  -->
+    <TextView
+        android:id="@+id/fraghomeRoomText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:layout_marginStart="20dp"
+        android:text="@string/room"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+    <!--  Divider Line  -->
+    <View
+        android:id="@+id/fraghomeDivider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/black" />
+
+    <!--  Scroll  -->
+    <ScrollView
+        android:id="@+id/fraghomeScroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <LinearLayout
+            android:id="@+id/fraghomeLinear4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--  Bedroom 1  -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fraghomeCard1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="12dp">
+                <LinearLayout
+                    android:id="@+id/fraghomeLinear5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shapegradient"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+                    <LinearLayout
+                        android:id="@+id/fraghomeLinear6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/fraghomeInfoText1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="18dp"
+                            android:layout_weight="1"
+                            android:text="@string/bedroom_1"
+                            android:textStyle="bold"
+                            android:textSize="18sp"/>
+                        <TextView
+                            android:id="@+id/fraghomeInfoText2"
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="15"
+                            android:layout_marginEnd="5dp"
+                            android:textSize="13sp"
+                            android:text="@string/room_is_hot"/>
+                        <Switch
+                            android:id="@+id/fraghomeSwitch1"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_marginRight="10dp"
+                            android:checked="true"
+                            android:thumb="@drawable/switchcircle"
+                            android:track="@drawable/switchtrack"/>
+                    </LinearLayout>
+                    <SeekBar
+                        android:id="@+id/fraghomeSeekBar1"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="25dp"
+                        android:max="14"
+                        android:progress="1"
+                        android:progressDrawable="@drawable/seekbargradient"
+                        android:splitTrack="false"
+                        android:thumb="@drawable/seekbarcircle"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!--  Bedroom 2  -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fraghomeCard2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="12dp">
+                <LinearLayout
+                    android:id="@+id/fraghomeLinear7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shapegradient"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+                    <LinearLayout
+                        android:id="@+id/fraghomeLinear8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/fraghomeInfoText3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="18dp"
+                            android:layout_weight="1"
+                            android:text="@string/bedroom_2"
+                            android:textSize="18sp"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:id="@+id/fraghomeInfoText4"
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="15"
+                            android:layout_marginEnd="5dp"
+                            android:textSize="13sp"
+                            android:text="@string/room_is_cold"/>
+                        <Switch
+                            android:id="@+id/fraghomeSwitch2"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_marginRight="10dp"
+                            android:checked="true"
+                            android:thumb="@drawable/switchcircle"
+                            android:track="@drawable/switchtrack"/>
+                    </LinearLayout>
+                    <SeekBar
+                        android:id="@+id/fraghomeSeekBar2"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="25dp"
+                        android:max="14"
+                        android:progress="11"
+                        android:progressDrawable="@drawable/seekbargradient"
+                        android:splitTrack="false"
+                        android:thumb="@drawable/seekbarcircle"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!--  Living Room  -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fraghomeCard3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="12dp">
+                <LinearLayout
+                    android:id="@+id/fraghomeLinear9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shapegradient"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+                    <LinearLayout
+                        android:id="@+id/fraghomeLinear10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/fraghomeInfoText5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="18dp"
+                            android:layout_weight="1"
+                            android:text="@string/living_room"
+                            android:textStyle="bold"
+                            android:textSize="18sp"/>
+                        <Switch
+                            android:id="@+id/fraghomeSwtich3"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_marginRight="10dp"
+                            android:checked="true"
+                            android:thumb="@drawable/switchcircle"
+                            android:track="@drawable/switchtrack"/>
+                    </LinearLayout>
+                    <SeekBar
+                        android:id="@+id/fraghomeSeekBar3"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="25dp"
+                        android:max="14"
+                        android:progress="7"
+                        android:progressDrawable="@drawable/seekbargradient"
+                        android:splitTrack="false"
+                        android:thumb="@drawable/seekbarcircle"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!--  Tips  -->
+            <TextView
+                android:id="@+id/fraghomeTipsText1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="@string/tips_for_saving_energy"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fraghomeCard4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="150dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="12dp">
+                <LinearLayout
+                    android:id="@+id/fraghomeLinear11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:id="@+id/fraghomeLinear12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/shapegradient"
+                        android:orientation="vertical"
+                        android:padding="24dp">
+                        <TextView
+                            android:id="@+id/fraghomeTipsText2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tip1"/>
+                        <TextView
+                            android:id="@+id/fraghomeTipsText3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/tip2"/>
+                        <TextView
+                            android:id="@+id/fraghomeTipsText4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/tip3"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
