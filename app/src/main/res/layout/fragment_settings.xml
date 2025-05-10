@@ -1,125 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/settingsFrame"
+    android:id="@+id/settingsLinear1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
     tools:context=".FragmentSettings">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
+        android:id="@+id/settingsLinear2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ImageView
-            android:id="@+id/settingsUserIcon"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="60dp"
-            android:contentDescription="@string/usericon"
-            android:src="@drawable/usericonwithbackground"
-            app:layout_constraintEnd_toStartOf="@+id/settingsText1"
-            app:layout_constraintHorizontal_bias="0.753"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/settingsText1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="76dp"
             android:text="@string/mr_guest"
+            android:textColor="@color/black"
             android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.374"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textStyle="bold" />
 
-        <LinearLayout
-            android:id="@+id/linearLayout"
+        <TextView
+            android:id="@+id/settingsEdit"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/editbutton"
+            android:backgroundTint="#c0c0c0"
+            android:clickable="true"
+            android:focusable="true"
+            android:text=""
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/settingsLinear3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <Button
+            android:id="@+id/settingsSecurity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/settingsText1"
-            app:layout_constraintVertical_bias="0.146">
+            android:layout_marginBottom="4dp"
+            android:backgroundTint="#7271EDFF"
+            android:text="@string/security"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:cornerRadius="10dp" />
 
-            <Button
-                android:id="@+id/settingsSecurity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:backgroundTint="#7271EDFF"
-                android:text="@string/security"
-                android:textAllCaps="false"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:cornerRadius="10dp" />
+        <Button
+            android:id="@+id/settingsLanguage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:backgroundTint="#7271EDFF"
+            android:text="@string/language"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:cornerRadius="10dp" />
 
-            <Button
-                android:id="@+id/settingsLang"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:backgroundTint="#7271EDFF"
-                android:text="@string/language"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:cornerRadius="10dp" />
+        <Button
+            android:id="@+id/settingsMetric"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:backgroundTint="#7271EDFF"
+            android:text="@string/metric"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:cornerRadius="10dp" />
 
-            <Button
-                android:id="@+id/settingsMetric"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:backgroundTint="#7271EDFF"
-                android:text="@string/metric"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:cornerRadius="10dp" />
+        <Button
+            android:id="@+id/settingsAboutUs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:backgroundTint="#7271EDFF"
+            android:text="@string/about_us"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:cornerRadius="10dp" />
 
-            <Button
-                android:id="@+id/settingsAboutUs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:backgroundTint="#7271EDFF"
-                android:text="@string/about_us"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:cornerRadius="10dp" />
+        <Button
+            android:id="@+id/settingsContactUs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:backgroundTint="#7271EDFF"
+            android:text="@string/contact_us"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:cornerRadius="10dp" />
 
-            <Button
-                android:id="@+id/settingsContactUs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:backgroundTint="#7271EDFF"
-                android:text="@string/contact_us"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:cornerRadius="10dp" />
+        <Button
+            android:id="@+id/settingsLogOut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="#7271EDFF"
+            android:text="@string/log_out"
+            android:textColor="#B71C1C"
+            android:textStyle="bold"
+            app:cornerRadius="10dp" />
 
-            <Button
-                android:id="@+id/settingsLogOut"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:backgroundTint="#7271EDFF"
-                android:text="@string/log_out"
-                android:textColor="#B71C1C"
-                android:textStyle="bold"
-                app:cornerRadius="10dp" />
+    </LinearLayout>
 
-        </LinearLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</FrameLayout>
+</LinearLayout>

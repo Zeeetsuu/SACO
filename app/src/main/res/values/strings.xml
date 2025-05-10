@@ -44,13 +44,57 @@
     <string name="hello_format">Hello, %s</string>
     <string name="welcome_format">Welcome to %s\'s home</string>
     <string name="room">Room</string>
-    <string name="bedroom_1">Bedroom 1</string>
+    <string name="bedroom_x">Bedroom %s</string>
     <string name="room_is_hot">(Room is Hot)</string>
-    <string name="bedroom_2">Bedroom 2</string>
     <string name="room_is_cold">(Room is Cold)</string>
     <string name="living_room">Living Room</string>
     <string name="tips_for_saving_energy">Tips for Saving Energy</string>
     <string name="tip1">Tip 1: Turn on the AC only when necessary.</string>
     <string name="tip2">Tip 2: Turn off the AC immediately when not in use.</string>
     <string name="tip3">Tip 3: Do regular AC maintanance, such as cleaning it.</string>
+    <string name="current_password">Current Password</string>
+    <string name="enter_your_current_password">Enter your current password</string>
+    <string name="enter_your_new_password">Enter your new password</string>
+    <string name="new_password">New Password</string>
+    <string name="DeleteConfirmation">Delete your account?</string>
+    <string name="DeleteAccountDialog">Are you sure you want to delete your account? This action cannot be undone.</string>
+    <string name="DeleteAccountButton">Delete</string>
+    <string name="Cancel">Cancel</string>
+    <string name="verifyidentity">Verify Identity</string>
+    <string name="confirmdeletion">Enter your password to confirm deletion</string>
+    <string name="verify">verify</string>
+    <string name="requiredpassword">Password is required</string>
+    <string name="editusername">Edit username</string>
+    <string name="Update">Update</string>
+    <string name="usernamecantbeempty">Username can\'t be empty</string>
+    <string name="usernameupdatesuccess">Username updated</string>
+    <string name="usernameupdatefail">Failed to update username</string>
+    <string name="english">English</string>
+    <string name="bahasa_indonesia">Bahasa Indonesia</string>
+    <string name="celsius" translatable="false">Celsius</string>
+    <string name="farenheit" translatable="false">Fahrenheit</string>
+    <string name="kelvin" translatable="false">Kelvin</string>
+    <string name="SACOinformation">Smart Air Conditioner Operation or better known as SACO is a Wi-Fi connected IoT that help you control the temperature of rooms in your house and track electricity usage remotely.</string>
+    <string name="SACOnumber" translatable="false">08XXXXXXXX</string>
+    <string name="SACOsupport" translatable="false">Support@SACO</string>
+    <string name="number_of_schedules">Number of schedules</string>
+    <string name="strip">-</string>
+    <string name="letterC">C</string>
+    <string name="letterSu">Su</string>
+    <string name="letterM">M</string>
+    <string name="letterTu">Tu</string>
+    <string name="letterW">W</string>
+    <string name="letterTh">Th</string>
+    <string name="letterF">F</string>
+    <string name="letterSa">Sa</string>
+    <string name="devices">Number of devices</string>
+    <string name="today">Today</string>
+    <string name="onforxhours">On for %s hours</string>
+    <string name="off">Off</string>
+    <string name="onforxminutes">on for %s minutes</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="date">%s</string>
+    <string name="xdaysago">%s Days Ago</string>
+    <string name="deviceCount">%s</string>
+    <string name="schedulecount">%s</string>
 </resources>

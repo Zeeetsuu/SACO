@@ -1,29 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentSecurity">
+    tools:context=".securityScreen">
 
     <LinearLayout
+        android:id="@+id/securityLinear"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="20dp">
 
         <!-- Back Button -->
         <TextView
+            android:id="@+id/securityBack"
             android:layout_width="149dp"
             android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
             android:paddingBottom="16dp"
             android:text="@string/security"
             android:textAlignment="center"
+            android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:textColor="@color/black"
-            android:clickable="true"
-            android:focusable="true"
             app:drawableStartCompat="@drawable/backbutton" />
 
         <!-- Email Section -->
@@ -32,51 +35,41 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/email"
+            android:textColor="@color/black"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"/>
+            android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/securityEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/mr_guest_dummymail_com"
-            android:background="#B2E0F3"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/roundbackground"
             android:padding="12dp"
-            android:textSize="16sp"
+            android:text="@string/mr_guest_dummymail_com"
             android:textColor="@android:color/black"
-            android:backgroundTint="#7271EDFF"
-            android:layout_marginTop="4dp" />
+            android:textSize="16sp" />
 
         <!-- Other Section -->
         <TextView
             android:id="@+id/securityText2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/other"
-            android:textSize="18sp"
-            android:textStyle="bold"
             android:layout_marginTop="16dp"
-            android:textColor="@color/black"/>
-
-        <Button
-            android:id="@+id/securityTwoStepVerification"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#7271EDFF"
-            android:text="@string/two_step_verification"
+            android:text="@string/other"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            app:cornerRadius="10dp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/securityChangePassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/change_password"
             android:backgroundTint="#7271EDFF"
+            android:text="@string/change_password"
             android:textColor="@color/black"
             android:textStyle="bold"
-            app:cornerRadius="10dp"/>
+            app:cornerRadius="10dp" />
 
         <Button
             android:id="@+id/securityDelete"
@@ -89,4 +82,4 @@
             app:cornerRadius="10dp" />
     </LinearLayout>
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
