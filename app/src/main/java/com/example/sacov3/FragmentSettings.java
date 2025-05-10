@@ -7,11 +7,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView; // Import TextView
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser; // Import FirebaseUser
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
-import android.text.TextUtils; // Import TextUtils to check for empty strings
+import android.text.TextUtils;
+import android.widget.LinearLayout;
+
+import java.util.Objects;
 
 
 /**
@@ -31,9 +38,8 @@ public class FragmentSettings extends Fragment {
     private String mParam2;
 
     private FirebaseAuth mAuth;
-
-    // Define a default name for when the user is not signed in or has no display name
-    private static final String DEFAULT_USER_NAME = "Mr. Guest"; // Matches your XML placeholder
+    private TextView usernameTextView;
+    private static final String DEFAULT_USER_NAME = "Mr. Guest";
 
     public FragmentSettings() {
         // Required empty public constructor
@@ -72,54 +78,138 @@ public class FragmentSettings extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
 
-        TextView usernameTextView = view.findViewById(R.id.settingsText1);
+        usernameTextView = view.findViewById(R.id.settingsText1);
+        TextView editTextView = view.findViewById(R.id.settingsEdit);
         Button logoutButton = view.findViewById(R.id.settingsLogOut);
+        Button securityButton = view.findViewById(R.id.settingsSecurity);
+        Button languageButton = view.findViewById(R.id.settingsLanguage);
+        Button metricButton = view.findViewById(R.id.settingsMetric);
+        Button aboutUsButton = view.findViewById(R.id.settingsAboutUs);
+        Button contactUsButton = view.findViewById(R.id.settingsContactUs);
 
-        // Change Mr.guest to the actual name of the user
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null) {
-            // User is signed in, get their display name (it isn't possible that a user can access this activity without being logged in, but just in case)
-            String displayName = currentUser.getDisplayName();
+        // Load user info
+        loadUserInfo();
 
-            // Check if the display name is not null or empty
-            if (!TextUtils.isEmpty(displayName)) {
-                usernameTextView.setText(displayName);
+        // Edit username section
+        editTextView.setOnClickListener(v -> {
+            FirebaseUser currentUser = mAuth.getCurrentUser();
+            if (currentUser != null) {
+                showEditUsernameDialog(currentUser);
             } else {
-                // Display name is empty or null, use the default placeholder
-                usernameTextView.setText(DEFAULT_USER_NAME);
+                Toast.makeText(getContext(), "You must be signed in to edit your username.", Toast.LENGTH_SHORT).show();
             }
-        } else {
-            // No user is signed in, use the default placeholder
-            usernameTextView.setText(DEFAULT_USER_NAME);
-        }
+        });
+
+        // Navigation buttons
+        languageButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), languageScreen.class);
+            startActivity(intent);
+        });
+        securityButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), securityScreen.class);
+            startActivity(intent);
+        });
+        metricButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), metricScreen.class);
+            startActivity(intent);
+        });
+        aboutUsButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), aboutUsScreen.class);
+            startActivity(intent);
+        });
+        contactUsButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), contactUsScreen.class);
+            startActivity(intent);
+        });
+
         // Logout system
         logoutButton.setOnClickListener(v -> {
-            // Confirmation Dialog Logic
+            // Confirmation Dialog
             new AlertDialog.Builder(requireContext())
-                    .setTitle(getString(R.string.confirmlogout)) // Title of dialog
-                    .setMessage(getString(R.string.areyousure)) // Message for the dialog
+                    .setTitle(getString(R.string.confirmlogout))
+                    .setMessage(getString(R.string.areyousure))
 
                     .setPositiveButton(getString(R.string.yes), (dialog, which) -> {
                         mAuth.signOut();
-                        // IMPORTANT: Replace LoginScreen.class with your actual Login/Start Activity
-                        Intent intent = new Intent(getActivity(), LoginScreen.class); // <-- Change LoginScreen.class if needed
+                        Intent intent = new Intent(getActivity(), LoginScreen.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Clears the activity stack
                         startActivity(intent);
-
-                        // Optional: If the hosting activity shouldn't stay open after logout
-                        // if (getActivity() != null) {
-                        //     getActivity().finish();
-                        // }
                     })
 
                     .setNegativeButton(getString(R.string.no), (dialog, which) -> {
-                        // dialog.dismiss(); // This happens automatically when a button is clicked
                     })
-
-                    // .setIcon if needed
-
-                    .show(); // Display the dialog
+                    .show();
         });
         return view;
+    }
+
+    // Load user info from Firebase
+    private void loadUserInfo() {
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            String displayName = currentUser.getDisplayName();
+            if (!TextUtils.isEmpty(displayName)) {
+                usernameTextView.setText(displayName);
+            } else {
+                usernameTextView.setText(DEFAULT_USER_NAME);
+            }
+        } else {
+            usernameTextView.setText(DEFAULT_USER_NAME);
+        }
+    }
+
+    // Dialog to edit username
+    private void showEditUsernameDialog(@NonNull FirebaseUser user) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setTitle(R.string.editusername);
+
+        // Input field
+        final EditText input = new EditText(requireContext());
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
+        input.setLayoutParams(lp);
+        int paddingDp = 16;
+        float density = getResources().getDisplayMetrics().density;
+        int paddingPx = (int)(paddingDp * density + 0.5f);
+        input.setPadding(paddingPx, paddingPx, paddingPx, paddingPx);
+
+        // Pre-fill with current name
+        String currentName = user.getDisplayName();
+        if (!TextUtils.isEmpty(currentName) && !currentName.equals(DEFAULT_USER_NAME)) {
+            input.setText(currentName);
+            input.setSelection(currentName.length());
+        }
+
+        builder.setView(input);
+
+        // Set up the buttons
+        builder.setPositiveButton(R.string.Update, (dialog, which) -> {
+            String newUsername = input.getText().toString().trim();
+
+            if (TextUtils.isEmpty(newUsername)) {
+                Toast.makeText(getContext(), R.string.usernamecantbeempty, Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // Update Firebase Auth profile
+            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                    .setDisplayName(newUsername)
+                    .build();
+
+            user.updateProfile(profileUpdates)
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            // Update the TextView in the Fragment
+                            usernameTextView.setText(newUsername);
+                            Toast.makeText(getContext(), R.string.usernameupdatesuccess, Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getContext(), R.string.usernameupdatefail + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        });
+
+        builder.setNegativeButton(R.string.Cancel, (dialog, which) -> dialog.cancel());
+        builder.show();
     }
 }

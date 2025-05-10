@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".aboutUsScreen">
+
+    <LinearLayout
+        android:id="@+id/aboutUsLinear"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Back Button -->
+        <TextView
+            android:id="@+id/aboutUsBack"
+            android:layout_width="149dp"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingBottom="16dp"
+            android:text="@string/about_us"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:drawableStartCompat="@drawable/backbutton" />
+
+        <TextView
+            android:id="@+id/aboutUsText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/roundbackground"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/black"
+            android:lineSpacingExtra="2dp"
+            android:text="@string/SACOinformation" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

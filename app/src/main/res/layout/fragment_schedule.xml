@@ -1,13 +1,665 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragscheduleLinear1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentSchedule">
+    android:orientation="vertical">
 
+    <!--  Header -->
+    <LinearLayout
+        android:id="@+id/fragscheduleLinear2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:layout_marginBottom="24dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:id="@+id/fragscheduleLinear3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/fragscheduleNumberOfSchedule"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/number_of_schedules"
+                android:textColor="@color/black"
+                android:textSize="19sp"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/fragscheduleCounter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/schedulecount"/>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/scheduleImageView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="130dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            app:srcCompat="@drawable/edit"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+    </LinearLayout>
+
+    <!--  Schedule  -->
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/fragscheduleTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="schedule fragment" />
-</FrameLayout>
+        android:layout_marginBottom="12dp"
+        android:layout_marginStart="20dp"
+        android:text="@string/schedule"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+    <!--  Divider Line  -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:background="@drawable/titleshadow" />
+    <View
+        android:id="@+id/fraghomeDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black" />
+
+    <!--  Scroll  -->
+    <ScrollView
+        android:id="@+id/fragscheduleScroll"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+        <LinearLayout
+            android:id="@+id/fragscheduleLinear4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--  Bedroom 1  -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fragscheduleCard1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="12dp">
+                <LinearLayout
+                    android:id="@+id/fragscheduleLinear5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shapegradient"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+                    <LinearLayout
+                        android:id="@+id/fragscheduleLinear6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/fragscheduleInfoText1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="18dp"
+                            android:layout_weight="1"
+                            android:text="@string/bedroom_x"
+                            android:textStyle="bold"
+                            android:textSize="20sp"/>
+
+                        <Switch
+                            android:id="@+id/fragscheduleSwitch1"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_marginEnd="10dp"
+                            android:checked="true"
+                            android:thumb="@drawable/switchcircle"
+                            android:track="@drawable/switchtrack"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/fragscheduleLinear7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="5dp">
+
+                        <Spinner
+                            android:id="@+id/fragscheduleSpinner1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="18dp"
+                            android:spinnerMode="dropdown"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+                        <TextView
+                            android:id="@+id/fragscheduleInfoText2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:text="@string/strip"
+                            android:textSize="20sp" />
+
+                        <Spinner
+                            android:id="@+id/fragscheduleSpinner2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:spinnerMode="dropdown"
+                            tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/fragscheduleLinear8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        >
+
+                        <Spinner
+                            android:id="@+id/fragscheduleSpinner3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="18dp"
+                            android:spinnerMode="dropdown"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+                        <TextView
+                            android:id="@+id/fragscheduleInfoText3"
+                            android:layout_width="25dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/letterC"
+                            android:textSize="15sp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/fragscheduleLinear9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ToggleButton
+                            android:id="@+id/fragscheduleToggleButton1"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_margin="6dp"
+                            android:background="@drawable/schedulecirclebutton"
+                            android:text="@string/letterSu"
+                            android:textColor="@color/black"
+                            android:textOff="@string/letterSu"
+                            android:textOn="@string/letterSu"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+                        <ToggleButton
+                            android:id="@+id/fragscheduleToggleButton2"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_margin="6dp"
+                            android:background="@drawable/schedulecirclebutton"
+                            android:text="@string/letterM"
+                            android:textColor="@color/black"
+                            android:textOff="@string/letterM"
+                            android:textOn="@string/letterM"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+                        <ToggleButton
+                            android:id="@+id/fragscheduleToggleButton3"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_margin="6dp"
+                            android:background="@drawable/schedulecirclebutton"
+                            android:text="@string/letterTu"
+                            android:textColor="@color/black"
+                            android:textOff="@string/letterTu"
+                            android:textOn="@string/letterTu"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+                        <ToggleButton
+                            android:id="@+id/fragscheduleToggleButton4"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_margin="6dp"
+                            android:background="@drawable/schedulecirclebutton"
+                            android:text="@string/letterW"
+                            android:textColor="@color/black"
+                            android:textOff="@string/letterW"
+                            android:textOn="@string/letterW"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+                        <ToggleButton
+                            android:id="@+id/fragscheduleToggleButton5"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_margin="6dp"
+                            android:background="@drawable/schedulecirclebutton"
+                            android:text="@string/letterTh"
+                            android:textColor="@color/black"
+                            android:textOff="@string/letterTh"
+                            android:textOn="@string/letterTh"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+                        <ToggleButton
+                            android:id="@+id/fragscheduleToggleButton6"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_margin="6dp"
+                            android:background="@drawable/schedulecirclebutton"
+                            android:text="@string/letterF"
+                            android:textColor="@color/black"
+                            android:textOff="@string/letterF"
+                            android:textOn="@string/letterF"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+                        <ToggleButton
+                            android:id="@+id/fragscheduleToggleButton7"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_margin="6dp"
+                            android:background="@drawable/schedulecirclebutton"
+                            android:text="@string/letterSa"
+                            android:textColor="@color/black"
+                            android:textOff="@string/letterSa"
+                            android:textOn="@string/letterSa"
+                            tools:ignore="TouchTargetSizeCheck" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!--  Bedroom 2  -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fragscheduleCard2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="12dp">
+                <LinearLayout
+                    android:id="@+id/fragscheduleLinear10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shapegradient"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+                    <LinearLayout
+                        android:id="@+id/fragscheduleLinear11"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/fragscheduleInfoText4"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="18dp"
+                            android:layout_weight="1"
+                            android:text="@string/bedroom_x"
+                            android:textStyle="bold"
+                            android:textSize="20sp"/>
+
+                        <Switch
+                            android:id="@+id/fragscheduleSwitch2"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_marginEnd="10dp"
+                            android:checked="true"
+                            android:thumb="@drawable/switchcircle"
+                            android:track="@drawable/switchtrack"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/fragscheduleLinear12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="5dp">
+
+                        <Spinner
+                            android:id="@+id/fragscheduleSpinner4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="18dp"
+                            android:spinnerMode="dropdown"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+                        <TextView
+                            android:id="@+id/fragscheduleInfoText5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:text="@string/strip"
+                            android:textSize="20sp" />
+
+                        <Spinner
+                            android:id="@+id/fragscheduleSpinner5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:spinnerMode="dropdown"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/fragscheduleLinear13"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <Spinner
+                            android:id="@+id/fragscheduleSpinner6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="18dp"
+                            android:spinnerMode="dropdown"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+                        <TextView
+                            android:id="@+id/fragscheduleInfoText6"
+                            android:layout_width="25dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/letterC"
+                            android:textSize="15sp"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/fragscheduleLinear14"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ToggleButton
+                            android:id="@+id/fragscheduleToggleButton8"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_margin="6dp"
+                            android:background="@drawable/schedulecirclebutton"
+                            android:text="@string/letterSu"
+                            android:textColor="@color/black"
+                            android:textOff="@string/letterSu"
+                            android:textOn="@string/letterSu"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+                        <ToggleButton
+                            android:id="@+id/fragscheduleToggleButton9"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_margin="6dp"
+                            android:background="@drawable/schedulecirclebutton"
+                            android:text="@string/letterM"
+                            android:textColor="@color/black"
+                            android:textOff="@string/letterM"
+                            android:textOn="@string/letterM"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+                        <ToggleButton
+                            android:id="@+id/fragscheduleToggleButton10"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_margin="6dp"
+                            android:background="@drawable/schedulecirclebutton"
+                            android:text="@string/letterTu"
+                            android:textColor="@color/black"
+                            android:textOff="@string/letterTu"
+                            android:textOn="@string/letterTu"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+                        <ToggleButton
+                            android:id="@+id/fragscheduleToggleButton11"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_margin="6dp"
+                            android:background="@drawable/schedulecirclebutton"
+                            android:text="@string/letterW"
+                            android:textColor="@color/black"
+                            android:textOff="@string/letterW"
+                            android:textOn="@string/letterW"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+                        <ToggleButton
+                            android:id="@+id/fragscheduleToggleButton12"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_margin="6dp"
+                            android:background="@drawable/schedulecirclebutton"
+                            android:text="@string/letterTh"
+                            android:textColor="@color/black"
+                            android:textOff="@string/letterTh"
+                            android:textOn="@string/letterTh"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+                        <ToggleButton
+                            android:id="@+id/fragscheduleToggleButton13"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_margin="6dp"
+                            android:background="@drawable/schedulecirclebutton"
+                            android:text="@string/letterF"
+                            android:textColor="@color/black"
+                            android:textOff="@string/letterF"
+                            android:textOn="@string/letterF"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+                        <ToggleButton
+                            android:id="@+id/fragscheduleToggleButton14"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_margin="6dp"
+                            android:background="@drawable/schedulecirclebutton"
+                            android:text="@string/letterSa"
+                            android:textColor="@color/black"
+                            android:textOff="@string/letterSa"
+                            android:textOn="@string/letterSa"
+                            tools:ignore="TouchTargetSizeCheck" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!--  Living room  -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fragscheduleCard3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="12dp">
+                <LinearLayout
+                    android:id="@+id/fragscheduleLinear15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shapegradient"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+                    <LinearLayout
+                        android:id="@+id/fragscheduleLinear16"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/fragscheduleInfoText7"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="18dp"
+                            android:layout_weight="1"
+                            android:text="@string/living_room"
+                            android:textStyle="bold"
+                            android:textSize="20sp"/>
+
+                        <Switch
+                            android:id="@+id/fragscheduleSwitch3"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_marginEnd="10dp"
+                            android:checked="true"
+                            android:thumb="@drawable/switchcircle"
+                            android:track="@drawable/switchtrack"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/fragscheduleLinear17"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="5dp">
+
+                        <Spinner
+                            android:id="@+id/fragscheduleSpinner7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="18dp"
+                            android:spinnerMode="dropdown"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+                        <TextView
+                            android:id="@+id/fragscheduleInfoText8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:text="@string/strip"
+                            android:textSize="20sp" />
+
+                        <Spinner
+                            android:id="@+id/fragscheduleSpinner8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:spinnerMode="dropdown"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/fragscheduleLinear18"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <Spinner
+                            android:id="@+id/fragscheduleSpinner9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="18dp"
+                            android:spinnerMode="dropdown"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+                        <TextView
+                            android:id="@+id/fragscheduleInfoText9"
+                            android:layout_width="25dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/letterC"
+                            android:textSize="15sp"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/fragscheduleLinear19"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ToggleButton
+                            android:id="@+id/fragscheduleToggleButton15"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_margin="6dp"
+                            android:background="@drawable/schedulecirclebutton"
+                            android:text="@string/letterSu"
+                            android:textOff="@string/letterSu"
+                            android:textOn="@string/letterSu"
+                            android:textColor="@color/black" />
+
+                        <ToggleButton
+                            android:id="@+id/fragscheduleToggleButton16"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_margin="6dp"
+                            android:background="@drawable/schedulecirclebutton"
+                            android:text="@string/letterM"
+                            android:textOff="@string/letterM"
+                            android:textOn="@string/letterM"
+                            android:textColor="@color/black" />
+
+                        <ToggleButton
+                            android:id="@+id/fragscheduleToggleButton17"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_margin="6dp"
+                            android:background="@drawable/schedulecirclebutton"
+                            android:text="@string/letterTu"
+                            android:textOff="@string/letterTu"
+                            android:textOn="@string/letterTu"
+                            android:textColor="@color/black" />
+
+                        <ToggleButton
+                            android:id="@+id/fragscheduleToggleButton18"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_margin="6dp"
+                            android:background="@drawable/schedulecirclebutton"
+                            android:text="@string/letterW"
+                            android:textOff="@string/letterW"
+                            android:textOn="@string/letterW"
+                            android:textColor="@color/black" />
+
+                        <ToggleButton
+                            android:id="@+id/fragscheduleToggleButton19"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_margin="6dp"
+                            android:background="@drawable/schedulecirclebutton"
+                            android:text="@string/letterTh"
+                            android:textOff="@string/letterTh"
+                            android:textOn="@string/letterTh"
+                            android:textColor="@color/black" />
+
+                        <ToggleButton
+                            android:id="@+id/fragscheduleToggleButton20"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_margin="6dp"
+                            android:background="@drawable/schedulecirclebutton"
+                            android:text="@string/letterF"
+                            android:textOff="@string/letterF"
+                            android:textOn="@string/letterF"
+                            android:textColor="@color/black" />
+
+                        <ToggleButton
+                            android:id="@+id/fragscheduleToggleButton21"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_margin="6dp"
+                            android:background="@drawable/schedulecirclebutton"
+                            android:text="@string/letterSa"
+                            android:textOff="@string/letterSa"
+                            android:textOn="@string/letterSa"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
