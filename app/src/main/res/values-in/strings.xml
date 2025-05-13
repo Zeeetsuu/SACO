@@ -90,4 +90,6 @@
     <string name="deviceCount">%s</string>
     <string name="schedulecount">%s</string>
     <string name="SACOinformation">Smart Air Conditioner Operation atau lebih dikenal sebagai SACO adalah IoT yang terhubung dengan Wi-Fi untuk membantu anda mengatur temperatur ruangan di rumah anda dan mengukur penggunaan listrik dari ponsel anda.</string>
+    <string name="manage_room">Atur Ruangan</string>
+    <string name="userinput">%s</string>
 </resources>

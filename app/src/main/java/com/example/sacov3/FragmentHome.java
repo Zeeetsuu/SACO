@@ -1,11 +1,13 @@
 package com.example.sacov3;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -68,6 +70,12 @@ public class FragmentHome extends Fragment {
 
         TextView helloTextView = view.findViewById(R.id.fraghomeHelloText);
         TextView welcomeTextView = view.findViewById(R.id.fraghomeWelcomeText);
+        ImageView manageButton = view.findViewById(R.id.HomeImageView);
+
+        manageButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), addDevices.class);
+            startActivity(intent);
+        });
 
         // Change Mr.Guest to user's username
         FirebaseUser currentUser = mAuth.getCurrentUser();
