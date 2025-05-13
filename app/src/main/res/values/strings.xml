@@ -97,4 +97,6 @@
     <string name="xdaysago">%s Days Ago</string>
     <string name="deviceCount">%s</string>
     <string name="schedulecount">%s</string>
+    <string name="manage_room">Manage Room</string>
+    <string name="userinput">%s</string>
 </resources>
