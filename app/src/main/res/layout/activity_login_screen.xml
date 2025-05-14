@@ -22,7 +22,7 @@
         android:id="@+id/loginScreenText1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="240dp"
+        android:layout_marginTop="200dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:fontFamily="sans-serif-black"
@@ -30,7 +30,6 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,7 +43,6 @@
         android:text="@string/email"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginScreenText1" />
 
@@ -52,7 +50,7 @@
         android:id="@+id/loginScreenInputEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:autofillHints=""
@@ -70,7 +68,7 @@
         android:id="@+id/loginScreenText3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:text="@string/password"
@@ -102,7 +100,7 @@
 
     <Button
         android:id="@+id/loginScreenButton"
-        android:layout_width="100dp"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#952CE5FB"
         android:text="@string/loginButton"
@@ -111,8 +109,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.77"
+        app:layout_constraintTop_toBottomOf="@+id/loginScreenInputPassword"
+        app:layout_constraintVertical_bias="0.1"
         tools:ignore="DuplicateSpeakableTextCheck" />
 
     <LinearLayout
@@ -124,7 +122,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.9"
+        app:layout_constraintVertical_bias="0.95"
         >
 
         <TextView
