@@ -20,36 +20,41 @@
 
     <TextView
         android:id="@+id/loginScreenText1"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="240dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:fontFamily="sans-serif-black"
         android:text="@string/login"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/loginScreenText2"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/email"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginScreenText1" />
 
     <EditText
         android:id="@+id/loginScreenInputEmail"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:width="350dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:autofillHints=""
         android:background="@drawable/inputbackground"
         android:ems="10"
@@ -63,22 +68,25 @@
 
     <TextView
         android:id="@+id/loginScreenText3"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/password"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginScreenInputEmail" />
 
     <EditText
         android:id="@+id/loginScreenInputPassword"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:width="350dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:autofillHints=""
         android:background="@drawable/inputbackground"
         android:ems="10"
@@ -94,42 +102,49 @@
 
     <Button
         android:id="@+id/loginScreenButton"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#952CE5FB"
         android:text="@string/loginButton"
         app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.907"
+        app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.77"
         tools:ignore="DuplicateSpeakableTextCheck" />
 
-    <TextView
-        android:id="@+id/loginScreenText4"
+    <LinearLayout
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:minHeight="48dp"
-        android:text="@string/don_t_have_an_account"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.896" />
+        app:layout_constraintVertical_bias="0.9"
+        >
 
-    <TextView
-        android:id="@+id/loginScreenText5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:minHeight="48dp"
-        android:text="@string/sign_up_here"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/loginScreenText4"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.896" />
+        <TextView
+            android:id="@+id/loginScreenText4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:minHeight="48dp"
+            android:text="@string/don_t_have_an_account" />
+
+        <TextView
+            android:id="@+id/loginScreenText5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:minHeight="48dp"
+            android:text="@string/sign_up_here" />
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
