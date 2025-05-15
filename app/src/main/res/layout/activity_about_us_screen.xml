@@ -17,7 +17,7 @@
         <!-- Back Button -->
         <TextView
             android:id="@+id/aboutUsBack"
-            android:layout_width="149dp"
+            android:layout_width="165dp"
             android:layout_height="wrap_content"
             android:clickable="true"
             android:focusable="true"
