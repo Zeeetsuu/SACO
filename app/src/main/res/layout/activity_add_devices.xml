@@ -20,21 +20,27 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <!-- Back Button -->
+    <LinearLayout
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="11"
+        android:gravity="center_vertical"
+        >
         <TextView
             android:id="@+id/manageRoomBack"
-            android:layout_width="0dp"
+            android:layout_width="210dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:clickable="true"
             android:focusable="true"
-            android:paddingBottom="16dp"
             android:text="@string/manage_room"
-            android:textAlignment="textStart"
+            android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
             app:drawableStartCompat="@drawable/backbutton" />
-
+    </LinearLayout>
         <!-- Add Device Button -->
         <ImageView
             android:id="@+id/manageRoomImageView"
