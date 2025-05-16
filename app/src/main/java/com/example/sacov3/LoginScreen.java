@@ -11,12 +11,12 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-// import com.google.firebase.database.FirebaseDatabase;
+
 
 public class LoginScreen extends AppCompatActivity {
 
     private static final String TAG = "LoginScreen"; // Tag for logging messages
-    private FirebaseAuth mAuth; // Firebase Authentication instance
+    private FirebaseAuth mAuth;
     private EditText emailEditText;
     private EditText passwordEditText;
     private Button loginButton;
@@ -35,9 +35,7 @@ public class LoginScreen extends AppCompatActivity {
         loginButton = findViewById(R.id.loginScreenButton);
         signUpLinkTextView = findViewById(R.id.loginScreenText5);
 
-        // On click listener for login button
         loginButton.setOnClickListener(v -> {
-            // Get user email and password
             String email = emailEditText.getText().toString().trim();
             String password = passwordEditText.getText().toString().trim();
 
@@ -54,10 +52,7 @@ public class LoginScreen extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "signInWithEmail:success");
 
-                            // Get the signed-in user object
                             FirebaseUser user = mAuth.getCurrentUser();
-
-                            // Display a success message
                             Toast.makeText(LoginScreen.this, "Authentication successful.",
                                     Toast.LENGTH_SHORT).show();
 
@@ -68,29 +63,13 @@ public class LoginScreen extends AppCompatActivity {
                                 Intent intent = new Intent(LoginScreen.this, HomeScreen.class);
                                 startActivity(intent);
                                 finish();
-
-                                // TODO: (Realtime Database Step) Example of fetching username after login:
-                                // FirebaseDatabase.getInstance().getReference("users").child(uid)
-                                //     .addListenerForSingleValueEvent(new com.google.firebase.database.ValueEventListener() {
-                                //         @Override
-                                //         public void onDataChange(@NonNull com.google.firebase.database.DataSnapshot dataSnapshot) {
-                                //             String username = dataSnapshot.child("username").getValue(String.class);
-                                //             Log.d(TAG, "Fetched username: " + username);
-                                //             // You can now use this username in your UI or pass it to the next activity
-                                //         }
-                                //         @Override
-                                //         public void onCancelled(@NonNull com.google.firebase.database.DatabaseError databaseError) {
-                                //             Log.w(TAG, "Failed to load username", databaseError.toException());
-                                //         }
-                                //     });
-
                             } else {
                                 Log.w(TAG, "signInWithEmail:success but user is null?");
                             }
 
 
                         } else {
-                            // If sign in fails, display a message to the user.
+                            // Sign in failed
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
                             String errorMessage = "Authentication failed.";
                             if (task.getException() != null) {
@@ -110,7 +89,6 @@ public class LoginScreen extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) on start of the activity
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
             Log.d(TAG, "onStart: User already signed in with UID " + currentUser.getUid());

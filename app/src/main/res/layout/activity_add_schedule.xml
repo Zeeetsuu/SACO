@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".addDevices">
+    tools:context=".addSchedule">
 
     <LinearLayout
         android:id="@+id/headerLayout"
@@ -20,32 +20,32 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <!-- Back Button -->
-    <LinearLayout
+        <LinearLayout
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_weight="11"
-        android:gravity="center_vertical"
-        >
-
-        <TextView
-            android:id="@+id/manageRoomBack"
-            android:layout_width="210dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="true"
-            android:focusable="true"
-            android:text="@string/manage_room"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:drawableStartCompat="@drawable/backbutton"
-            tools:ignore="TouchTargetSizeCheck" />
-    </LinearLayout>
-        <!-- Add Device Button -->
+            android:orientation="horizontal"
+            android:layout_weight="11"
+            android:gravity="center_vertical"
+            >
+
+            <TextView
+                android:id="@+id/manageScheduleBack"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="@string/manage_schedule"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:drawableStartCompat="@drawable/backbutton"
+                tools:ignore="TouchTargetSizeCheck" />
+        </LinearLayout>
+        <!-- Add Schedule Button -->
         <ImageView
-            android:id="@+id/manageRoomImageView"
+            android:id="@+id/manageScheduleImageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
@@ -55,9 +55,9 @@
 
     </LinearLayout>
 
-    <!-- RecyclerView to display added devices -->
+    <!-- RecyclerView to display added schedules -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/devicesRecyclerView"
+        android:id="@+id/scheduleRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"

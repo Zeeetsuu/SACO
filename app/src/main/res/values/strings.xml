@@ -99,4 +99,9 @@
     <string name="schedulecount">%s</string>
     <string name="manage_room">Manage Room</string>
     <string name="userinput">%s</string>
+    <string name="manage_schedule">Manage Schedule</string>
+    <string name="editdevice">Edit Device</string>
+    <string name="savebutton">Save</string>
+    <string name="DeviceNameEmpty">Device name cannot be empty</string>
+    <string name="ErrorDevice">Error editing device.</string>
 </resources>

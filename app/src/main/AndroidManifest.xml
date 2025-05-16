@@ -13,6 +13,9 @@
         android:theme="@style/Theme.SACOv3"
         tools:targetApi="31">
         <activity
+            android:name=".addSchedule"
+            android:exported="false" />
+        <activity
             android:name=".addDevices"
             android:exported="false" />
         <activity
