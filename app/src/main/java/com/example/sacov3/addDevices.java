@@ -12,25 +12,24 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
-
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
+
+import com.example.sacov3.Device;
+
 public class addDevices extends AppCompatActivity {
 
-    private static final String TAG = "AddDevicesActivity"; // Tag for logging
+    private static final String TAG = "AddDevicesActivity";
 
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
@@ -42,7 +41,6 @@ public class addDevices extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_devices);
 
-        // Initialize Firebase
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance("https://saco-7273a-default-rtdb.asia-southeast1.firebasedatabase.app").getReference();
 
@@ -52,11 +50,9 @@ public class addDevices extends AppCompatActivity {
         ImageView addCircle = findViewById(R.id.manageRoomImageView);
         addCircle.setOnClickListener(v -> showAddDeviceDialog());
 
-        // Recycler view
         devicesRecyclerView = findViewById(R.id.devicesRecyclerView);
         devicesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Load and display user's devices
         loadUserDevices();
     }
 
@@ -70,15 +66,19 @@ public class addDevices extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Add New Device");
 
-        // input for device ID
         final EditText input = new EditText(this);
-        input.setHint("Enter Unique Device ID"); // Suggest unique ID
+        input.setHint("Enter Unique Device ID");
         input.setInputType(InputType.TYPE_CLASS_TEXT);
         builder.setView(input);
 
         builder.setPositiveButton("Add", (dialog, which) -> {
             String deviceId = input.getText().toString().trim();
             if (!deviceId.isEmpty()) {
+                // Basic validation for Firebase key characters
+                if (deviceId.matches(".*[.#$\\[\\]/\\x00-\\x1F\\x7F].*")) {
+                    Toast.makeText(addDevices.this, "Invalid Device ID. Cannot contain ., #, $, [, ], /, or control characters.", Toast.LENGTH_LONG).show();
+                    return;
+                }
                 addDeviceToDatabase(deviceId, currentUser.getUid());
             } else {
                 Toast.makeText(addDevices.this, "Device ID cannot be empty", Toast.LENGTH_SHORT).show();
@@ -91,6 +91,7 @@ public class addDevices extends AppCompatActivity {
 
     private void addDeviceToDatabase(String deviceId, String userId) {
         DatabaseReference deviceRef = mDatabase.child("devices").child(deviceId);
+
         deviceRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 if (task.getResult().exists()) {
@@ -102,15 +103,15 @@ public class addDevices extends AppCompatActivity {
                             Toast.makeText(addDevices.this, "This device ID is already claimed.", Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        Log.w(TAG, "Device ID exists but has no ownerId: " + deviceId);
+                        Log.w(TAG, "Device ID exists but has no ownerId (unexpected based on rules): " + deviceId);
                         actuallyAddDeviceData(deviceId, userId);
                     }
                 } else {
                     actuallyAddDeviceData(deviceId, userId);
                 }
             } else {
-                Log.e(TAG, "Failed to check device existence: " + deviceId, task.getException());
-                Toast.makeText(addDevices.this, "Error checking device ID.", Toast.LENGTH_SHORT).show();
+                Log.e(TAG, "Failed to check device existence for ID: " + deviceId, task.getException());
+                Toast.makeText(addDevices.this, "Error checking device ID. Please check connection or app permissions.", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -118,18 +119,18 @@ public class addDevices extends AppCompatActivity {
     private void showEditDeviceDialog(String deviceKey, Device currentDevice) {
         if (deviceKey == null || currentDevice == null) {
             Log.w(TAG, "Cannot show edit dialog, deviceKey or currentDevice is null.");
-            Toast.makeText(this, "Error editing device.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.ErrorDevice, Toast.LENGTH_SHORT).show();
             return;
         }
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Edit Device");
+        builder.setTitle(R.string.editdevice);
 
         LinearLayout layout = new LinearLayout(this);
         layout.setOrientation(LinearLayout.VERTICAL);
         layout.setPadding(50, 20, 50, 20);
 
-
+        // Device Name Input
         final EditText deviceNameInput = new EditText(this);
         deviceNameInput.setHint("Device Name");
         deviceNameInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_WORDS);
@@ -138,17 +139,17 @@ public class addDevices extends AppCompatActivity {
 
         builder.setView(layout);
 
-        builder.setPositiveButton("Save", (dialog, which) -> {
+        builder.setPositiveButton(R.string.savebutton, (dialog, which) -> {
             String newDeviceName = deviceNameInput.getText().toString().trim();
             if (newDeviceName.isEmpty()) {
-                Toast.makeText(this, "Device name cannot be empty.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.DeviceNameEmpty, Toast.LENGTH_SHORT).show();
                 return;
             }
 
             java.util.Map<String, Object> updates = new java.util.HashMap<>();
             updates.put("deviceName", newDeviceName);
 
-            mDatabase.child("devices").child(deviceKey)
+            mDatabase.child("devices").child(deviceKey) // Use the deviceKey (ID) to reference the correct node
                     .updateChildren(updates, (databaseError, databaseReference) -> {
                         if (databaseError != null) {
                             Log.e(TAG, "Failed to update device " + deviceKey + ": " + databaseError.getMessage());
@@ -160,7 +161,7 @@ public class addDevices extends AppCompatActivity {
                     });
         });
 
-        builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
+        builder.setNegativeButton(R.string.Cancel, (dialog, which) -> dialog.cancel());
 
         builder.show();
     }
@@ -168,8 +169,7 @@ public class addDevices extends AppCompatActivity {
 
     private void actuallyAddDeviceData(String deviceId, String userId) {
         DatabaseReference deviceRef = mDatabase.child("devices").child(deviceId);
-
-        Device newDevice = new Device(userId, 0, 0, 22, "My AC"); // Default values
+        Device newDevice = new Device(userId, 0, 0, 22, "My AC");
 
         deviceRef.setValue(newDevice, (databaseError, databaseReference) -> {
             if (databaseError != null) {
@@ -181,7 +181,6 @@ public class addDevices extends AppCompatActivity {
             }
         });
     }
-
 
     private void loadUserDevices() {
         FirebaseUser currentUser = mAuth.getCurrentUser();
@@ -212,37 +211,40 @@ public class addDevices extends AppCompatActivity {
 
                 holder.roomNameTextView.setText(model.getDeviceName() != null ? model.getDeviceName() : "Unnamed Device");
 
-                // Delete button
+                // Using the updated ID R.id.device_id for the TextView
+                if (deviceKey != null) {
+                    holder.deviceIdTextView.setText("ID: " + deviceKey);
+                } else {
+                    holder.deviceIdTextView.setText("ID: N/A");
+                }
+
+                // Delete button click listener
                 holder.deleteIconImageView.setOnClickListener(v -> {
                     if (deviceKey != null) {
                         new AlertDialog.Builder(addDevices.this)
                                 .setTitle("Delete Device")
                                 .setMessage("Are you sure you want to delete '" + model.getDeviceName() + "'?")
-                                .setPositiveButton(android.R.string.yes, (dialog, which) -> {
-                                    mDatabase.child("devices").child(deviceKey).removeValue((error, ref) -> {
-                                        if (error != null) {
-                                            Log.e(TAG, "Failed to delete device " + deviceKey + ": " + error.getMessage());
-                                            Toast.makeText(addDevices.this, "Failed to delete device.", Toast.LENGTH_SHORT).show();
-                                        } else {
-                                            Log.d(TAG, "Device deleted successfully: " + deviceKey);
-                                            Toast.makeText(addDevices.this, "'" + model.getDeviceName() + "' deleted.", Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
-                                })
+                                .setPositiveButton(android.R.string.yes, (dialog, which) -> mDatabase.child("devices").child(deviceKey).removeValue((error, ref) -> {
+                                    if (error != null) {
+                                        Log.e(TAG, "Failed to delete device " + deviceKey + ": " + error.getMessage());
+                                        Toast.makeText(addDevices.this, "Failed to delete device.", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Log.d(TAG, "Device deleted successfully: " + deviceKey);
+                                        Toast.makeText(addDevices.this, "'" + model.getDeviceName() + "' deleted.", Toast.LENGTH_SHORT).show();
+                                    }
+                                }))
                                 .setNegativeButton(android.R.string.no, null)
                                 .setIcon(android.R.drawable.ic_dialog_alert)
-                                .show(); // Display the dialog
+                                .show();
                     } else {
                         Log.w(TAG, "Attempted to delete a device with a null key at position: " + position);
                         Toast.makeText(addDevices.this, "Error deleting device.", Toast.LENGTH_SHORT).show();
                     }
                 });
 
-
-                // Edit button
+                // Edit button click listener
                 holder.editIconImageView.setOnClickListener(v -> {
                     Device currentDevice = getItem(position);
-
                     if (deviceKey != null && currentDevice != null) {
                         showEditDeviceDialog(deviceKey, currentDevice);
                     } else {
@@ -250,21 +252,23 @@ public class addDevices extends AppCompatActivity {
                         Toast.makeText(addDevices.this, "Error preparing to edit device.", Toast.LENGTH_SHORT).show();
                     }
                 });
-
             }
         };
 
         devicesRecyclerView.setAdapter(firebaseAdapter);
     }
 
+    // Modified ViewHolder to include the new TextView for the device ID
     public static class DeviceViewHolder extends RecyclerView.ViewHolder {
         TextView roomNameTextView;
+        TextView deviceIdTextView; // New TextView for device ID
         ImageView editIconImageView;
         ImageView deleteIconImageView;
 
         public DeviceViewHolder(View itemView) {
             super(itemView);
             roomNameTextView = itemView.findViewById(R.id.room_name);
+            deviceIdTextView = itemView.findViewById(R.id.device_id); // Find the new TextView using R.id.device_id
             editIconImageView = itemView.findViewById(R.id.edit_icon);
             deleteIconImageView = itemView.findViewById(R.id.delete_icon);
         }
@@ -291,8 +295,10 @@ public class addDevices extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // Good practice to release resources
-        firebaseAdapter = null; // Help garbage collection
-        Log.d(TAG, "Activity destroyed.");
+        if (firebaseAdapter != null) {
+            firebaseAdapter.stopListening();
+        }
+        firebaseAdapter = null;
+        Log.d(TAG, "Activity destroyed. Adapter resources potentially released.");
     }
 }

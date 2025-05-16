@@ -47,13 +47,7 @@ public class SignUpScreen extends AppCompatActivity {
         signUpButton = findViewById(R.id.signUpScreenButton);
         loginLinkTextView = findViewById(R.id.signUpScreenText7);
 
-        // Optional: If you have a TextView to show error/status messages
-        // statusTextView = findViewById(R.id.statusTextView); // Example ID - uncomment and replace if you have one
-
-
-        //  Sign up button click listener
         signUpButton.setOnClickListener(v -> {
-            // Get input values from the EditText fields
             String email = emailEditText.getText().toString().trim();
             String username = usernameEditText.getText().toString().trim();
             String password = passwordEditText.getText().toString().trim();
@@ -63,8 +57,6 @@ public class SignUpScreen extends AppCompatActivity {
             if (TextUtils.isEmpty(email) || TextUtils.isEmpty(username) || TextUtils.isEmpty(password) || TextUtils.isEmpty(confirmPassword)) {
                 Toast.makeText(SignUpScreen.this, "All fields are required.",
                         Toast.LENGTH_SHORT).show();
-                // Optional: update status TextView
-                // if (statusTextView != null) statusTextView.setText("All fields are required.");
                 return;
             }
 
@@ -72,16 +64,12 @@ public class SignUpScreen extends AppCompatActivity {
             if (!password.equals(confirmPassword)) {
                 Toast.makeText(SignUpScreen.this, "Passwords do not match.",
                         Toast.LENGTH_SHORT).show();
-                // Optional: update status TextView
-                // if (statusTextView != null) statusTextView.setText("Passwords do not match.");
                 return;
             }
 
             if (password.length() < 6) {
                 Toast.makeText(SignUpScreen.this, "Password must be at least 6 characters long.",
                         Toast.LENGTH_SHORT).show();
-                // Optional: update status TextView
-                // if (statusTextView != null) statusTextView.setText("Password must be at least 6 characters long.");
                 return;
             }
 
@@ -96,10 +84,6 @@ public class SignUpScreen extends AppCompatActivity {
                             Toast.makeText(SignUpScreen.this, "Sign up successful!",
                                     Toast.LENGTH_SHORT).show();
 
-                            // Optional: update status TextView
-                            // if (statusTextView != null) statusTextView.setText("Sign up successful!");
-
-
                             // get UID from firebase
                             if (user != null) {
                                 String uid = user.getUid();
@@ -112,7 +96,6 @@ public class SignUpScreen extends AppCompatActivity {
                                         .addOnSuccessListener(aVoid -> Log.d(TAG, "User data saved to RTDB for " + uid))
                                         .addOnFailureListener(e -> Log.w(TAG, "Failed to save user data to RTDB for " + uid, e));
 
-                                // Set display name in firebase auth
                                 UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                                         .setDisplayName(username)
                                         .build();
@@ -151,16 +134,12 @@ public class SignUpScreen extends AppCompatActivity {
                             }
                             Toast.makeText(SignUpScreen.this, errorMessage,
                                     Toast.LENGTH_SHORT).show();
-                            // Optional: update status TextView
-                            // if (statusTextView != null) statusTextView.setText(errorMessage);
-
-                            // You can check task.getException() for specific error types (e.g., FirebaseAuthUserCollisionException for email already in use)
                         }
                     });
         });
 
         loginLinkTextView.setOnClickListener(v -> {
-            Intent intent = new Intent(SignUpScreen.this, HomeScreen.class);
+            Intent intent = new Intent(SignUpScreen.this, LoginScreen.class);
             startActivity(intent);
         });
     }

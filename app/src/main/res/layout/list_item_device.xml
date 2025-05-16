@@ -17,17 +17,35 @@
         android:background="@drawable/shapegradient"
         android:gravity="center_vertical">
 
-        <!-- Device Name / Room Name -->
-        <TextView
-            android:id="@+id/room_name"
+        <!-- Container for Device Name and Device ID -->
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:orientation="vertical"
             android:paddingStart="16dp"
-            android:paddingEnd="0dp"
-            tools:text="Bedroom AC"
-            android:textSize="18sp"
-            android:textColor="@android:color/black"/>
+            android:paddingEnd="0dp">
+
+            <!-- Device Name / Room Name -->
+            <TextView
+                android:id="@+id/room_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Bedroom AC"
+                android:textSize="18sp"
+                android:textColor="@android:color/black"/>
+
+            <!-- Device ID  -->
+            <TextView
+                android:id="@+id/device_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="ID: 12345678"
+                android:textSize="12sp"
+                android:textColor="@android:color/darker_gray"/>
+
+        </LinearLayout>
+
 
         <!-- Edit Icon -->
         <ImageView
