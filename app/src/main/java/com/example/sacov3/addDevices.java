@@ -169,7 +169,7 @@ public class addDevices extends AppCompatActivity {
 
     private void actuallyAddDeviceData(String deviceId, String userId) {
         DatabaseReference deviceRef = mDatabase.child("devices").child(deviceId);
-        Device newDevice = new Device(userId, 0, 0, 22, "My AC");
+        Device newDevice = new Device(userId, 0, 0, 22, "My AC", false);
 
         deviceRef.setValue(newDevice, (databaseError, databaseReference) -> {
             if (databaseError != null) {
