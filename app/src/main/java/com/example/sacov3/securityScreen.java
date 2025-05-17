@@ -21,10 +21,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 
 public class securityScreen extends AppCompatActivity {
-
     private static final String TAG = "SecurityScreen";
     private FirebaseAuth mAuth;
-
     private TextView securityEmailTextView;
     private static final String DEFAULT_EMAIL_PLACEHOLDER = "No email available";
 
@@ -33,10 +31,8 @@ public class securityScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_security_screen);
 
-        // Initialize Firebase Authentication
         mAuth = FirebaseAuth.getInstance();
 
-        // Back Button
         TextView backButton = findViewById(R.id.securityBack);
         backButton.setOnClickListener(v -> finish());
 
@@ -44,7 +40,6 @@ public class securityScreen extends AppCompatActivity {
         Button changePasswordButton = findViewById(R.id.securityChangePassword);
         Button deleteAccountButton = findViewById(R.id.securityDelete);
 
-        // Display user's email
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
             String userEmail = currentUser.getEmail();
@@ -57,17 +52,14 @@ public class securityScreen extends AppCompatActivity {
             securityEmailTextView.setText(DEFAULT_EMAIL_PLACEHOLDER);
         }
 
-        // Change password button
         changePasswordButton.setOnClickListener(v -> {
             Intent intent = new Intent(this, securityChangePassword.class);
             startActivity(intent);
         });
 
-        // Delete button
-        deleteAccountButton.setOnClickListener(v -> showDeleteConfirmationDialog());
+        deleteAccountButton.setOnClickListener(v -> deleteConfirmationDialog());
     }
 
-    // Keep user logged in even if the app is closed
     @Override
     public void onStart() {
         super.onStart();
@@ -84,10 +76,7 @@ public class securityScreen extends AppCompatActivity {
         }
     }
 
-    /**
-     * Shows a confirmation dialog before attempting to delete the user account.
-     */
-    private void showDeleteConfirmationDialog() {
+    private void deleteConfirmationDialog() {
         new AlertDialog.Builder(this)
                 .setTitle(R.string.delete_account)
                 .setMessage(R.string.DeleteAccountDialog)
@@ -98,17 +87,12 @@ public class securityScreen extends AppCompatActivity {
                 .show();
     }
 
-
-    /**
-     * Attempts to delete the currently logged-in user's account.
-     * Handles re-authentication if required.
-     */
     private void deleteUserAccount() {
         FirebaseUser user = mAuth.getCurrentUser();
 
         if (user == null) {
             Log.w(TAG, "Attempted account deletion while not logged in.");
-            Toast.makeText(this, "No user is currently logged in.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.mustlogin, Toast.LENGTH_SHORT).show(); //bug prevention
             Intent intent = new Intent(this, LoginScreen.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
@@ -116,26 +100,23 @@ public class securityScreen extends AppCompatActivity {
             return;
         }
 
-        // Attempt to delete account
         user.delete()
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         Log.d(TAG, "User account deleted successfully.");
-                        Toast.makeText(this, "Your account has been deleted.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, R.string.accountdeleted, Toast.LENGTH_SHORT).show();
                         mAuth.signOut();
 
-                        // Redirect to the login screen
                         Intent intent = new Intent(this, LoginScreen.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                         finishAffinity();
 
                     } else {
-                        // Handle deletion failure
                         Log.w(TAG, "Failed to delete user account.", task.getException());
                         if (task.getException() instanceof FirebaseAuthRecentLoginRequiredException) {
                             Toast.makeText(this, "Please re-enter your password to delete your account.", Toast.LENGTH_LONG).show();
-                            showReauthenticateDialog(user);
+                            reauthenticateDialog(user);
                         } else {
                             String errorMessage = "Failed to delete account.";
                             if (task.getException() != null) {
@@ -147,10 +128,7 @@ public class securityScreen extends AppCompatActivity {
                 });
     }
 
-    /**
-     * Shows a dialog to prompt the user to re-enter their password for re-authentication.
-     */
-    private void showReauthenticateDialog(FirebaseUser user) {
+    private void reauthenticateDialog(FirebaseUser user) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.verifyidentity);
         builder.setMessage(R.string.confirmdeletion);

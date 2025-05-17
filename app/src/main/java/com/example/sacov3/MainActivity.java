@@ -15,10 +15,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Splash screen duration (milliseconds)
         long splashDuration = 3000; // 3 seconds
 
-        // Use a Handler with a delayed Runnable to start the second activity
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
             Intent intent = new Intent(MainActivity.this, LoginScreen.class);
             startActivity(intent);

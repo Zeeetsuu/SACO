@@ -15,48 +15,44 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginScreen extends AppCompatActivity {
 
-    private static final String TAG = "LoginScreen"; // Tag for logging messages
+    private static final String TAG = "LoginScreen";
     private FirebaseAuth mAuth;
     private EditText emailEditText;
     private EditText passwordEditText;
     private Button loginButton;
-    private TextView signUpLinkTextView;
+    private TextView signUpLink;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_screen);
 
-        // Initialize Firebase Authentication
         mAuth = FirebaseAuth.getInstance();
 
         emailEditText = findViewById(R.id.loginScreenInputEmail);
         passwordEditText = findViewById(R.id.loginScreenInputPassword);
         loginButton = findViewById(R.id.loginScreenButton);
-        signUpLinkTextView = findViewById(R.id.loginScreenText5);
+        signUpLink = findViewById(R.id.loginScreenText5);
 
         loginButton.setOnClickListener(v -> {
             String email = emailEditText.getText().toString().trim();
             String password = passwordEditText.getText().toString().trim();
 
-            // Email and password validation
             if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
-                Toast.makeText(LoginScreen.this, "Please enter both email and password.",
+                Toast.makeText(LoginScreen.this, R.string.enterbothemailandpass,
                         Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            // Call Firebase Authentication to sign in the user
             mAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(LoginScreen.this, task -> {
                         if (task.isSuccessful()) {
-                            Log.d(TAG, "signInWithEmail:success");
+                            Log.d(TAG, "signIn success");
 
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(LoginScreen.this, "Authentication successful.",
+                            Toast.makeText(LoginScreen.this, R.string.authenticationsuccess,
                                     Toast.LENGTH_SHORT).show();
 
-                            // Get the UID and potentially fetch user data from Realtime Database
                             if (user != null) {
                                 String uid = user.getUid();
                                 Log.d(TAG, "User logged in with UID: " + uid);
@@ -64,13 +60,13 @@ public class LoginScreen extends AppCompatActivity {
                                 startActivity(intent);
                                 finish();
                             } else {
-                                Log.w(TAG, "signInWithEmail:success but user is null?");
+                                Log.w(TAG, "signIn error: User is null");
                             }
 
 
                         } else {
                             // Sign in failed
-                            Log.w(TAG, "signInWithEmail:failure", task.getException());
+                            Log.w(TAG, "signIn failure", task.getException());
                             String errorMessage = "Authentication failed.";
                             if (task.getException() != null) {
                                 errorMessage += " " + task.getException().getMessage();
@@ -80,7 +76,7 @@ public class LoginScreen extends AppCompatActivity {
                         }
                     });
         });
-        signUpLinkTextView.setOnClickListener(v -> {
+        signUpLink.setOnClickListener(v -> {
             Intent intent = new Intent(LoginScreen.this, SignUpScreen.class);
             startActivity(intent);
         });
