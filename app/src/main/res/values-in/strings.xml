@@ -133,4 +133,5 @@
     <string name="passwordminimallength">Kata sandi wajib memiliki minimal 6 karakter</string>
     <string name="passwordupdatesuccess">Kata sandi berhasil diperbarui</string>
     <string name="accountdeleted">Akun berhasil dihapus!</string>
+    <string name="enterpasswordagain">Tolong ketik ulang kata sandi anda untuk menghapus akun</string>
 </resources>

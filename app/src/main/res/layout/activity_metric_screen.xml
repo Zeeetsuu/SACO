@@ -14,7 +14,6 @@
         android:orientation="vertical"
         android:padding="20dp">
 
-        <!-- Back Button -->
         <TextView
             android:id="@+id/metricBack"
             android:layout_width="135dp"
@@ -29,7 +28,6 @@
             android:textStyle="bold"
             app:drawableStartCompat="@drawable/backbutton" />
 
-        <!-- Buttons -->
         <Button
             android:id="@+id/metricCelcius"
             android:layout_width="match_parent"

@@ -142,4 +142,5 @@
     <string name="passwordminimallength">Password must be at least 6 characters long</string>
     <string name="passwordupdatesuccess">Password updated successfully</string>
     <string name="accountdeleted">Account successfully deleted!</string>
+    <string name="enterpasswordagain">Please re-enter your password to delete your account</string>
 </resources>

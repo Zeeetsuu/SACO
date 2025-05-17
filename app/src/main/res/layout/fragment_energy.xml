@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragenergyLinear1"
@@ -8,7 +7,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!--  Header (Devices)  -->
     <LinearLayout
         android:id="@+id/fragenergyLinear2"
         android:layout_width="match_parent"
@@ -40,7 +38,6 @@
 
     </LinearLayout>
 
-    <!--  Scroll  -->
     <ScrollView
         android:id="@+id/fragenergyScroll"
         android:layout_width="match_parent"
@@ -60,125 +57,116 @@
                 android:textSize="20sp"
                 android:textStyle="bold"/>
 
-            <!--  Today Card -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/fragenergyCard1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="20dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="12dp">
+                    <LinearLayout
+                        android:id="@+id/fragenergyTodayContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/shapegradient"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:id="@+id/fragenergyLinear9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/fragenergyYesterday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="@string/yesterday"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/fragenergyDate1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="@string/date"
+                    android:textSize="15sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
             <androidx.cardview.widget.CardView
-                android:id="@+id/fragenergyCard1"
+                android:id="@+id/fragenergyCard2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="8dp"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="12dp">
+                <LinearLayout
+                    android:id="@+id/fragenergyYesterdayContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shapegradient"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
             <LinearLayout
-                android:id="@+id/fragenergyTodayContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/shapegradient"
-            android:orientation="vertical"
-            android:padding="8dp">
+                android:id="@+id/fragenergyLinear14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/fragenergyDaysAgo1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="@string/xdaysago"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/fragenergyDate2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="@string/date"
+                    android:textSize="15sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fragenergyCard3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="12dp">
+                <LinearLayout
+                    android:id="@+id/fragenergyTwoDaysAgoContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shapegradient"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <!--  Yesterday Header -->
-    <LinearLayout
-        android:id="@+id/fragenergyLinear9"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/fragenergyYesterday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:text="@string/yesterday"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
-        <TextView
-            android:id="@+id/fragenergyDate1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:text="@string/date"
-            android:textSize="15sp"
-            android:textStyle="bold"/>
-    </LinearLayout>
-
-    <!--  Yesterday Card -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/fragenergyCard2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="8dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="12dp">
-    <LinearLayout
-        android:id="@+id/fragenergyYesterdayContainer"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/shapegradient"
-    android:orientation="vertical"
-    android:padding="8dp">
-
-</LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <!--  2 Days Ago Header -->
-<LinearLayout
-android:id="@+id/fragenergyLinear14"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:layout_marginTop="5dp"
-android:layout_marginBottom="5dp"
-android:orientation="horizontal">
-
-<TextView
-    android:id="@+id/fragenergyDaysAgo1"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:layout_marginStart="20dp"
-android:text="@string/xdaysago"
-android:textSize="20sp"
-android:textStyle="bold"/>
-<TextView
-    android:id="@+id/fragenergyDate2"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:layout_marginStart="4dp"
-android:text="@string/date"
-android:textSize="15sp"
-android:textStyle="bold"/>
-</LinearLayout>
-
-    <!--  2 Days Ago Card -->
-<androidx.cardview.widget.CardView
-android:id="@+id/fragenergyCard3"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:layout_marginTop="10dp"
-android:layout_marginStart="20dp"
-android:layout_marginEnd="20dp"
-android:layout_marginBottom="8dp"
-app:cardCornerRadius="16dp"
-app:cardElevation="12dp">
-<LinearLayout
-    android:id="@+id/fragenergyTwoDaysAgoContainer"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:background="@drawable/shapegradient"
-android:orientation="vertical"
-android:padding="8dp">
-
-</LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    </LinearLayout>
     </ScrollView>
-    </LinearLayout>
+</LinearLayout>

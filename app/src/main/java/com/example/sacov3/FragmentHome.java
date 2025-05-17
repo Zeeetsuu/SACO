@@ -122,7 +122,7 @@ public class FragmentHome extends Fragment {
                 Device device = dataSnapshot.getValue(Device.class);
                 if (deviceKey != null && device != null && !deviceViews.containsKey(deviceKey)) {
                     LayoutInflater inflater = LayoutInflater.from(getContext());
-                    View template = inflater.inflate(R.layout.list_item_home_device, linearLayout, false);
+                    View template = inflater.inflate(R.layout.home_template, linearLayout, false);
 
                     TextView deviceName = template.findViewById(R.id.templateDeviceName);
                     Switch powerSwitch = template.findViewById(R.id.templateSwitch);

@@ -14,7 +14,6 @@
         android:orientation="vertical"
         android:padding="20dp">
 
-        <!-- Back Button -->
         <TextView
             android:id="@+id/aboutUsBack"
             android:layout_width="165dp"
@@ -39,5 +38,4 @@
             android:lineSpacingExtra="2dp"
             android:text="@string/SACOinformation" />
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

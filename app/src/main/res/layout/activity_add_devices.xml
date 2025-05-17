@@ -19,31 +19,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Back Button -->
-    <LinearLayout
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_weight="11"
-        android:gravity="center_vertical"
-        >
-
-        <TextView
-            android:id="@+id/manageRoomBack"
-            android:layout_width="210dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="true"
-            android:focusable="true"
-            android:text="@string/manage_room"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:drawableStartCompat="@drawable/backbutton"
-            tools:ignore="TouchTargetSizeCheck" />
-    </LinearLayout>
-        <!-- Add Device Button -->
+            android:orientation="horizontal"
+            android:layout_weight="11"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/manageRoomBack"
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="@string/manage_room"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:drawableStartCompat="@drawable/backbutton"
+                tools:ignore="TouchTargetSizeCheck" />
+        </LinearLayout>
+
         <ImageView
             android:id="@+id/manageRoomImageView"
             android:layout_width="wrap_content"
@@ -55,7 +53,6 @@
 
     </LinearLayout>
 
-    <!-- RecyclerView to display added devices -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/devicesRecyclerView"
         android:layout_width="0dp"
@@ -69,6 +66,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headerLayout"
         tools:ignore="SpeakableTextPresentCheck"
-        tools:listitem="@layout/list_item_device" />
+        tools:listitem="@layout/add_device_template" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

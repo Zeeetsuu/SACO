@@ -115,7 +115,7 @@ public class securityScreen extends AppCompatActivity {
                     } else {
                         Log.w(TAG, "Failed to delete user account.", task.getException());
                         if (task.getException() instanceof FirebaseAuthRecentLoginRequiredException) {
-                            Toast.makeText(this, "Please re-enter your password to delete your account.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(this, R.string.enterpasswordagain, Toast.LENGTH_LONG).show();
                             reauthenticateDialog(user);
                         } else {
                             String errorMessage = "Failed to delete account.";
@@ -133,12 +133,10 @@ public class securityScreen extends AppCompatActivity {
         builder.setTitle(R.string.verifyidentity);
         builder.setMessage(R.string.confirmdeletion);
 
-        // Set up the input field in the dialog
         final EditText passwordInput = new EditText(this);
         passwordInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
         passwordInput.setHint(R.string.password);
 
-        // Add padding to the EditText
         LinearLayout layout = new LinearLayout(this);
         layout.setOrientation(LinearLayout.VERTICAL);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
@@ -152,8 +150,6 @@ public class securityScreen extends AppCompatActivity {
 
         builder.setView(layout);
 
-
-        // Set up the buttons for the re-authentication dialog
         builder.setPositiveButton(R.string.verify, (dialog, which) -> {
             String password = passwordInput.getText().toString().trim();
 
@@ -162,11 +158,10 @@ public class securityScreen extends AppCompatActivity {
                 return;
             }
 
-            // Perform Re-authentication with the entered password
             String email = user.getEmail();
             if (email == null) {
                 Log.w(TAG, "Cannot re-authenticate: User email is null.");
-                Toast.makeText(this, "Cannot verify identity. Please contact support.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Cannot verify identity.", Toast.LENGTH_SHORT).show(); //bug prevention
                 return;
             }
 
@@ -177,11 +172,9 @@ public class securityScreen extends AppCompatActivity {
                     .addOnCompleteListener(this, task -> {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "User re-authenticated successfully.");
-                            // Re-authentication successful
                             deleteUserAccount();
 
                         } else {
-                            // Re-authentication failed
                             Log.w(TAG, "Re-authentication failed.", task.getException());
                             String errorMessage = "Verification failed. Check your password.";
                             if (task.getException() != null) {
