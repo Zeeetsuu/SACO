@@ -38,16 +38,6 @@
                 android:text="@string/deviceCount"/>
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/energyImageView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="110dp"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:focusable="true"
-            app:srcCompat="@drawable/history"
-            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
     </LinearLayout>
 
     <!--  Scroll  -->
@@ -70,7 +60,7 @@
                 android:textSize="20sp"
                 android:textStyle="bold"/>
 
-            <!--  Today -->
+            <!--  Today Card -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fragenergyCard1"
                 android:layout_width="match_parent"
@@ -81,361 +71,114 @@
                 android:layout_marginBottom="20dp"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="12dp">
-                <LinearLayout
-                    android:id="@+id/fragenergyLinear5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/shapegradient"
-                    android:orientation="vertical"
-                    android:padding="8dp">
-
-                    <LinearLayout
-                        android:id="@+id/fragenergyLinear6"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:gravity="center_vertical"
-                        android:orientation="vertical">
-                        <TextView
-                            android:id="@+id/fragenergyBedroom1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="18dp"
-                            android:layout_weight="1"
-                            android:text="@string/bedroom_x"
-                            android:textStyle="bold"
-                            android:textSize="18sp"/>
-                        <TextView
-                            android:id="@+id/fragenergyBedroomStatus1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="15"
-                            android:layout_marginStart="18dp"
-                            android:textSize="13sp"
-                            android:text="@string/onforxhours"/>
-                    </LinearLayout>
-
-                    <!--  Bedroom 2  -->
-                    <LinearLayout
-                        android:id="@+id/fragenergyLinear7"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:gravity="center_vertical"
-                        android:orientation="vertical">
-                        <TextView
-                            android:id="@+id/fragenergyBedroom2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="18dp"
-                            android:layout_weight="1"
-                            android:text="@string/bedroom_x"
-                            android:textStyle="bold"
-                            android:textSize="18sp"/>
-                        <TextView
-                            android:id="@+id/fragenergyBedroomStatus2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="15"
-                            android:layout_marginStart="18dp"
-                            android:textSize="13sp"
-                            android:text="@string/off"/>
-                    </LinearLayout>
-
-                    <!--  Living Room -->
-                    <LinearLayout
-                        android:id="@+id/fragenergyLinear8"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:gravity="center_vertical"
-                        android:orientation="vertical">
-                        <TextView
-                            android:id="@+id/fragenergyLivingRoom"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="18dp"
-                            android:layout_weight="1"
-                            android:text="@string/living_room"
-                            android:textStyle="bold"
-                            android:textSize="18sp"/>
-                        <TextView
-                            android:id="@+id/fragenergyLivingRoomStatus1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="15"
-                            android:layout_marginStart="18dp"
-                            android:textSize="13sp"
-                            android:text="@string/onforxminutes"/>
-                    </LinearLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!--  Yesterday -->
             <LinearLayout
-                android:id="@+id/fragenergyLinear9"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/fragenergyYesterday"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:text="@string/yesterday"
-                    android:textSize="20sp"
-                    android:textStyle="bold"/>
-                <TextView
-                    android:id="@+id/fragenergyDate1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:text="@string/date"
-                    android:textSize="15sp"
-                    android:textStyle="bold"/>
-            </LinearLayout>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/fragenergyCard2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="8dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="12dp">
-                <LinearLayout
-                    android:id="@+id/fragenergyLinear10"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/shapegradient"
-                    android:orientation="vertical"
-                    android:padding="8dp">
-
-                    <!--  Bedroom 1  -->
-                    <LinearLayout
-                        android:id="@+id/fragenergyLinear11"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:gravity="center_vertical"
-                        android:orientation="vertical">
-                        <TextView
-                            android:id="@+id/fragenergyBedroom3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="18dp"
-                            android:layout_weight="1"
-                            android:text="@string/bedroom_x"
-                            android:textStyle="bold"
-                            android:textSize="18sp"/>
-                        <TextView
-                            android:id="@+id/fragenergyBedroomStatus3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="15"
-                            android:layout_marginStart="18dp"
-                            android:textSize="13sp"
-                            android:text="@string/off"/>
-                    </LinearLayout>
-
-                    <!--  Bedroom 2  -->
-                    <LinearLayout
-                        android:id="@+id/fragenergyLinear12"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:gravity="center_vertical"
-                        android:orientation="vertical">
-                        <TextView
-                            android:id="@+id/fragenergyBedroom4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="18dp"
-                            android:layout_weight="1"
-                            android:text="@string/bedroom_x"
-                            android:textStyle="bold"
-                            android:textSize="18sp"/>
-                        <TextView
-                            android:id="@+id/fragenergyBedroomStatus4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="15"
-                            android:layout_marginStart="18dp"
-                            android:textSize="13sp"
-                            android:text="@string/onforxhours"/>
-                    </LinearLayout>
-
-                    <!--  Living Room  -->
-                    <LinearLayout
-                        android:id="@+id/fragenergyLinear13"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:gravity="center_vertical"
-                        android:orientation="vertical">
-                        <TextView
-                            android:id="@+id/fragenergyLivingRoom1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="18dp"
-                            android:layout_weight="1"
-                            android:text="@string/living_room"
-                            android:textStyle="bold"
-                            android:textSize="18sp"/>
-                        <TextView
-                            android:id="@+id/fragenergyLivingRoomStatus2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="15"
-                            android:layout_marginStart="18dp"
-                            android:textSize="13sp"
-                            android:text="@string/onforxhours"/>
-                    </LinearLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!--  2 Days Ago -->
-            <LinearLayout
-                android:id="@+id/fragenergyLinear14"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/fragenergyDaysAgo1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:text="@string/xdaysago"
-                    android:textSize="20sp"
-                    android:textStyle="bold"/>
-                <TextView
-                    android:id="@+id/fragenergyDate2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:text="@string/date"
-                    android:textSize="15sp"
-                    android:textStyle="bold"/>
-            </LinearLayout>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/fragenergyCard3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="8dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="12dp">
-                <LinearLayout
-                    android:id="@+id/fragenergyLinear15"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/shapegradient"
-                    android:orientation="vertical"
-                    android:padding="8dp">
-
-                    <!--  Bedroom 1  -->
-                    <LinearLayout
-                        android:id="@+id/fragenergyLinear16"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:gravity="center_vertical"
-                        android:orientation="vertical">
-                        <TextView
-                            android:id="@+id/fragenergyBedroom5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="18dp"
-                            android:layout_weight="1"
-                            android:text="@string/bedroom_x"
-                            android:textStyle="bold"
-                            android:textSize="18sp"/>
-                        <TextView
-                            android:id="@+id/fragenergyBedroomStatus5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="15"
-                            android:layout_marginStart="18dp"
-                            android:textSize="13sp"
-                            android:text="@string/off"/>
-                    </LinearLayout>
-
-                    <!--  Bedroom 2  -->
-                    <LinearLayout
-                        android:id="@+id/fragenergyLinear17"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:gravity="center_vertical"
-                        android:orientation="vertical">
-                        <TextView
-                            android:id="@+id/fragenergyBedroom6"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="18dp"
-                            android:layout_weight="1"
-                            android:text="@string/bedroom_x"
-                            android:textStyle="bold"
-                            android:textSize="18sp"/>
-                        <TextView
-                            android:id="@+id/fragenergyBedroomStatus6"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="15"
-                            android:layout_marginStart="18dp"
-                            android:textSize="13sp"
-                            android:text="@string/onforxhours"/>
-                    </LinearLayout>
-
-                    <!--  Living Room  -->
-                    <LinearLayout
-                        android:id="@+id/fragenergyLinear18"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:gravity="center_vertical"
-                        android:orientation="vertical">
-                        <TextView
-                            android:id="@+id/fragenergyLivingRoom2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="18dp"
-                            android:layout_weight="1"
-                            android:text="@string/living_room"
-                            android:textStyle="bold"
-                            android:textSize="18sp"/>
-                        <TextView
-                            android:id="@+id/fragenergyLivingRoomStatus3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="15"
-                            android:layout_marginStart="18dp"
-                            android:textSize="13sp"
-                            android:text="@string/onforxhours"/>
-                    </LinearLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
+                android:id="@+id/fragenergyTodayContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shapegradient"
+            android:orientation="vertical"
+            android:padding="8dp">
         </LinearLayout>
-    </ScrollView>
+    </androidx.cardview.widget.CardView>
+
+    <!--  Yesterday Header -->
+    <LinearLayout
+        android:id="@+id/fragenergyLinear9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/fragenergyYesterday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="@string/yesterday"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/fragenergyDate1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="@string/date"
+            android:textSize="15sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <!--  Yesterday Card -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/fragenergyCard2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="12dp">
+    <LinearLayout
+        android:id="@+id/fragenergyYesterdayContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shapegradient"
+    android:orientation="vertical"
+    android:padding="8dp">
+
 </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!--  2 Days Ago Header -->
+<LinearLayout
+android:id="@+id/fragenergyLinear14"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginTop="5dp"
+android:layout_marginBottom="5dp"
+android:orientation="horizontal">
+
+<TextView
+    android:id="@+id/fragenergyDaysAgo1"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_marginStart="20dp"
+android:text="@string/xdaysago"
+android:textSize="20sp"
+android:textStyle="bold"/>
+<TextView
+    android:id="@+id/fragenergyDate2"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_marginStart="4dp"
+android:text="@string/date"
+android:textSize="15sp"
+android:textStyle="bold"/>
+</LinearLayout>
+
+    <!--  2 Days Ago Card -->
+<androidx.cardview.widget.CardView
+android:id="@+id/fragenergyCard3"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginTop="10dp"
+android:layout_marginStart="20dp"
+android:layout_marginEnd="20dp"
+android:layout_marginBottom="8dp"
+app:cardCornerRadius="16dp"
+app:cardElevation="12dp">
+<LinearLayout
+    android:id="@+id/fragenergyTwoDaysAgoContainer"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:background="@drawable/shapegradient"
+android:orientation="vertical"
+android:padding="8dp">
+
+</LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+    </ScrollView>
+    </LinearLayout>

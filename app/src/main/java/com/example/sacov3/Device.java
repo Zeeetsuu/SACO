@@ -21,7 +21,7 @@ public class Device {
         this.roomTemp = roomTemp;
         this.desiredTemp = desiredTemp;
         this.deviceName = deviceName;
-        this.powerOn = powerOn; // Initialize the new field
+        this.powerOn = powerOn;
     }
 
     public String getOwnerId() {

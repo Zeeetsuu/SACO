@@ -36,7 +36,6 @@ public class FragmentSettings extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
     private FirebaseAuth mAuth;
     private TextView usernameTextView;
     private static final String DEFAULT_USER_NAME = "Mr. Guest";
@@ -87,20 +86,17 @@ public class FragmentSettings extends Fragment {
         Button aboutUsButton = view.findViewById(R.id.settingsAboutUs);
         Button contactUsButton = view.findViewById(R.id.settingsContactUs);
 
-        // Load user info
         loadUserInfo();
 
-        // Edit username section
         editTextView.setOnClickListener(v -> {
             FirebaseUser currentUser = mAuth.getCurrentUser();
             if (currentUser != null) {
-                showEditUsernameDialog(currentUser);
+                EditUsernameDialog(currentUser);
             } else {
-                Toast.makeText(getContext(), "You must be signed in to edit your username.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), R.string.mustlogin, Toast.LENGTH_SHORT).show();
             }
         });
 
-        // Navigation buttons
         languageButton.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), languageScreen.class);
             startActivity(intent);
@@ -122,9 +118,7 @@ public class FragmentSettings extends Fragment {
             startActivity(intent);
         });
 
-        // Logout system
         logoutButton.setOnClickListener(v -> {
-            // Confirmation Dialog
             new AlertDialog.Builder(requireContext())
                     .setTitle(getString(R.string.confirmlogout))
                     .setMessage(getString(R.string.areyousure))
@@ -132,10 +126,9 @@ public class FragmentSettings extends Fragment {
                     .setPositiveButton(getString(R.string.yes), (dialog, which) -> {
                         mAuth.signOut();
                         Intent intent = new Intent(getActivity(), LoginScreen.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Clears the activity stack
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                     })
-
                     .setNegativeButton(getString(R.string.no), (dialog, which) -> {
                     })
                     .show();
@@ -143,7 +136,6 @@ public class FragmentSettings extends Fragment {
         return view;
     }
 
-    // Load user info from Firebase
     private void loadUserInfo() {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
@@ -158,8 +150,7 @@ public class FragmentSettings extends Fragment {
         }
     }
 
-    // Dialog to edit username
-    private void showEditUsernameDialog(@NonNull FirebaseUser user) {
+    private void EditUsernameDialog(@NonNull FirebaseUser user) {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         builder.setTitle(R.string.editusername);
 
@@ -174,7 +165,6 @@ public class FragmentSettings extends Fragment {
         int paddingPx = (int)(paddingDp * density + 0.5f);
         input.setPadding(paddingPx, paddingPx, paddingPx, paddingPx);
 
-        // Pre-fill with current name
         String currentName = user.getDisplayName();
         if (!TextUtils.isEmpty(currentName) && !currentName.equals(DEFAULT_USER_NAME)) {
             input.setText(currentName);
@@ -183,7 +173,6 @@ public class FragmentSettings extends Fragment {
 
         builder.setView(input);
 
-        // Set up the buttons
         builder.setPositiveButton(R.string.Update, (dialog, which) -> {
             String newUsername = input.getText().toString().trim();
 
@@ -192,7 +181,6 @@ public class FragmentSettings extends Fragment {
                 return;
             }
 
-            // Update Firebase Auth profile
             UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                     .setDisplayName(newUsername)
                     .build();
@@ -200,7 +188,6 @@ public class FragmentSettings extends Fragment {
             user.updateProfile(profileUpdates)
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
-                            // Update the TextView in the Fragment
                             usernameTextView.setText(newUsername);
                             Toast.makeText(getContext(), R.string.usernameupdatesuccess, Toast.LENGTH_SHORT).show();
                         } else {

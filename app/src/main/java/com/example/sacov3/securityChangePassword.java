@@ -18,8 +18,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class securityChangePassword extends AppCompatActivity {
 
-    private static final String TAG = "ChangePasswordActivity"; // Tag for logging
-
+    private static final String TAG = "ChangePasswordActivity";
     private FirebaseAuth mAuth;
     private EditText currentPasswordEditText;
     private EditText newPasswordEditText;
@@ -32,7 +31,6 @@ public class securityChangePassword extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_security_change_password);
 
-        // Firebase Authentication
         mAuth = FirebaseAuth.getInstance();
 
         currentPasswordEditText = findViewById(R.id.securityCurrentPassword);
@@ -41,64 +39,53 @@ public class securityChangePassword extends AppCompatActivity {
         changePasswordButton = findViewById(R.id.securityChangePasswordButton);
         backButton = findViewById(R.id.securityChangePasswordBack);
 
-        // Back button
         backButton.setOnClickListener(v -> {
             finish();
         });
 
-        // Change Password button
         changePasswordButton.setOnClickListener(v -> {
             String currentPassword = currentPasswordEditText.getText().toString().trim();
             String newPassword = newPasswordEditText.getText().toString().trim();
             String confirmPassword = confirmPasswordEditText.getText().toString().trim();
 
-            // Input Validation
             if (TextUtils.isEmpty(currentPassword) || TextUtils.isEmpty(newPassword) || TextUtils.isEmpty(confirmPassword)) {
-                Toast.makeText(this, "All fields are required.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.required, Toast.LENGTH_SHORT).show();
                 return;
             }
-
             if (!newPassword.equals(confirmPassword)) {
-                Toast.makeText(this, "New passwords do not match.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.passwordnotmatch, Toast.LENGTH_SHORT).show();
                 return;
             }
-
-            // Basic password length check
             if (newPassword.length() < 6) {
-                Toast.makeText(this, "New password must be at least 6 characters long.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.passwordminimallength, Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            // Get the current user
             FirebaseUser user = mAuth.getCurrentUser();
 
-            // Re-authentication and password update
             if (user != null) {
                 String email = user.getEmail();
 
                 if (email == null) {
                     Toast.makeText(this, "Cannot change password without a valid email.", Toast.LENGTH_SHORT).show();
+                    // normally not possible but just in case
                     return;
                 }
 
                 AuthCredential credential = EmailAuthProvider.getCredential(email, currentPassword);
 
-                // Re-authenticate the user
                 user.reauthenticate(credential)
                         .addOnCompleteListener(this, task -> {
                             if (task.isSuccessful()) {
                                 Log.d(TAG, "User re-authenticated.");
 
-                                // Update the password
                                 user.updatePassword(newPassword)
                                         .addOnCompleteListener(this, updateTask -> {
                                             if (updateTask.isSuccessful()) {
                                                 Log.d(TAG, "User password updated.");
-                                                Toast.makeText(this, "Password updated successfully!", Toast.LENGTH_SHORT).show();
-                                                // Optionally, finish this activity after success
+                                                Toast.makeText(this, R.string.passwordupdatesuccess, Toast.LENGTH_SHORT).show();
                                                 finish();
                                             } else {
-                                                // Password update failure
                                                 Log.w(TAG, "Error updating password.", updateTask.getException());
                                                 String errorMessage = "Failed to update password.";
                                                 if (updateTask.getException() != null) {
@@ -109,7 +96,6 @@ public class securityChangePassword extends AppCompatActivity {
                                         });
 
                             } else {
-                                // Re-authentication failure
                                 Log.w(TAG, "Error re-authenticating user.", task.getException());
                                 String errorMessage = "Re-authentication failed. Please check your current password.";
                                 if (task.getException() instanceof FirebaseAuthRecentLoginRequiredException) {
@@ -131,8 +117,8 @@ public class securityChangePassword extends AppCompatActivity {
 
 
             } else {
-                Log.w(TAG, "Attempted password change while not logged in.");
-                Toast.makeText(this, "You must be logged in to change password.", Toast.LENGTH_SHORT).show();
+                Log.w(TAG, "User tried to change password while not logged in.");
+                Toast.makeText(this, R.string.mustlogin, Toast.LENGTH_SHORT).show(); // bug prevention
                 Intent intent = new Intent(this, LoginScreen.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);

@@ -10,7 +10,6 @@ import java.util.Map;
 
 public class HomeScreen extends AppCompatActivity {
 
-    // Define ID constants
     public static final int MENU_HOME = R.id.menuHome;
     public static final int MENU_SCHEDULE = R.id.menuSchedule;
     public static final int MENU_ENERGY = R.id.menuEnergy;
@@ -27,7 +26,6 @@ public class HomeScreen extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.homeScreenNavBar);
         bottomNavigationView.setOnItemSelectedListener(navListener);
 
-        // Initialize the fragment map
         initializeFragmentMap();
 
         if (savedInstanceState == null) {
@@ -35,7 +33,6 @@ public class HomeScreen extends AppCompatActivity {
         }
     }
 
-    // Initialize the fragment map
     private void initializeFragmentMap() {
         fragmentMap.put(MENU_HOME, new FragmentHome());
         fragmentMap.put(MENU_SCHEDULE, new FragmentSchedule());
@@ -43,12 +40,9 @@ public class HomeScreen extends AppCompatActivity {
         fragmentMap.put(MENU_SETTINGS, new FragmentSettings());
     }
 
-    // Define the navigation listener
     private final BottomNavigationView.OnItemSelectedListener navListener =
             item -> {
                 Fragment selectedFragment = fragmentMap.get(item.getItemId());
-
-                // Replace the current fragment with the selected one
                 if (selectedFragment != null) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.homeScreenFrame, selectedFragment).commit();
                 }

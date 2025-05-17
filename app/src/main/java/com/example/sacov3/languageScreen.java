@@ -18,8 +18,6 @@ public class languageScreen extends AppCompatActivity {
     TextView languageBack;
     TextView languageText1;
     TextView languageText2;
-
-    // SharedPreferences file name and key for language preference
     private static final String PREFS_NAME = "LanguagePrefs";
     private static final String LANGUAGE_KEY = "selected_language";
 
@@ -27,7 +25,6 @@ public class languageScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Apply the saved language preference before setting the content view
         loadLocale();
 
         setContentView(R.layout.activity_language_screen);
@@ -39,7 +36,6 @@ public class languageScreen extends AppCompatActivity {
         languageText1 = findViewById(R.id.languageText1);
         languageText2 = findViewById(R.id.languageText2);
 
-        // Back button
         if (languageBack != null) {
             languageBack.setOnClickListener(v -> finish());
         }
@@ -57,19 +53,14 @@ public class languageScreen extends AppCompatActivity {
         });
     }
 
-    // Save the selected language and apply it
     private void setAndSaveLocale(String languageCode) {
-        // Save the language preference
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString(LANGUAGE_KEY, languageCode);
         editor.apply();
-
-        // Set the locale
         setLocale(languageCode);
     }
 
-    // Load the saved language preference and apply it
     private void loadLocale() {
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         String language = prefs.getString(LANGUAGE_KEY, "");
@@ -79,14 +70,12 @@ public class languageScreen extends AppCompatActivity {
         }
     }
 
-    // Set the locale and apply it
     private void setLocale(String languageCode) {
         Locale locale = new Locale(languageCode);
         LocaleListCompat localeList = LocaleListCompat.create(locale);
         androidx.appcompat.app.AppCompatDelegate.setApplicationLocales(localeList);
     }
 
-    // Manually update the TextViews with the new strings to improve UX
     private void updateLanguageTextViews() {
         Resources resources = getResources();
         Configuration configuration = resources.getConfiguration();
