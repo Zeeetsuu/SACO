@@ -17,7 +17,6 @@
         android:background="@drawable/shapegradient"
         android:gravity="center_vertical">
 
-        <!-- Container for Device Name and Device ID -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -26,7 +25,6 @@
             android:paddingStart="16dp"
             android:paddingEnd="0dp">
 
-            <!-- Device Name / Room Name -->
             <TextView
                 android:id="@+id/room_name"
                 android:layout_width="match_parent"
@@ -35,7 +33,6 @@
                 android:textSize="18sp"
                 android:textColor="@android:color/black"/>
 
-            <!-- Device ID  -->
             <TextView
                 android:id="@+id/device_id"
                 android:layout_width="match_parent"
@@ -46,8 +43,6 @@
 
         </LinearLayout>
 
-
-        <!-- Edit Icon -->
         <ImageView
             android:id="@+id/edit_icon"
             android:layout_width="wrap_content"
@@ -59,7 +54,6 @@
             android:src="@drawable/manageroomedit"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
-        <!-- Delete Icon -->
         <ImageView
             android:id="@+id/delete_icon"
             android:layout_width="wrap_content"

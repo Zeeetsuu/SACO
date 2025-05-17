@@ -179,21 +179,21 @@ public class FragmentEnergy extends Fragment {
                 String deviceId = entry.getKey();
                 String deviceName = entry.getValue();
 
-                View todayContainer = inflater.inflate(R.layout.list_item_energy_device, this.todayContainer, false);
+                View todayContainer = inflater.inflate(R.layout.energy_template, this.todayContainer, false);
                 TextView todayDeviceName = todayContainer.findViewById(R.id.fragenergyContainerDeviceName);
                 TextView todayDeviceStatus = todayContainer.findViewById(R.id.fragenergyContainerDeviceStatus);
                 todayDeviceName.setText(deviceName);
                 todayDeviceStatus.setText(R.string.DataNotAvailable);
                 this.todayContainer.addView(todayContainer);
 
-                View yesterdayContainer = inflater.inflate(R.layout.list_item_energy_device, this.yesterdayContainer, false);
+                View yesterdayContainer = inflater.inflate(R.layout.energy_template, this.yesterdayContainer, false);
                 TextView yesterdayDeviceName = yesterdayContainer.findViewById(R.id.fragenergyContainerDeviceName);
                 TextView yesterdayDeviceStatus = yesterdayContainer.findViewById(R.id.fragenergyContainerDeviceStatus);
                 yesterdayDeviceName.setText(deviceName);
                 yesterdayDeviceStatus.setText(R.string.DataNotAvailable);
                 this.yesterdayContainer.addView(yesterdayContainer);
 
-                View twoDaysAgoContainer = inflater.inflate(R.layout.list_item_energy_device, this.twoDaysAgoContainer, false);
+                View twoDaysAgoContainer = inflater.inflate(R.layout.energy_template, this.twoDaysAgoContainer, false);
                 TextView twoDaysAgoDeviceName = twoDaysAgoContainer.findViewById(R.id.fragenergyContainerDeviceName);
                 TextView twoDaysAgoDeviceStatus = twoDaysAgoContainer.findViewById(R.id.fragenergyContainerDeviceStatus);
                 twoDaysAgoDeviceName.setText(deviceName);

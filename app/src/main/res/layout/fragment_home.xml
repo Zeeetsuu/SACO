@@ -8,7 +8,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!-- Header -->
     <LinearLayout
         android:id="@+id/fraghomeLinear2"
         android:layout_width="match_parent"
@@ -57,7 +56,7 @@
         </LinearLayout>
     </LinearLayout>
 
-    <!-- Room Title -->
+
     <TextView
         android:id="@+id/fraghomeRoomText"
         android:layout_width="wrap_content"
@@ -68,7 +67,6 @@
         android:textSize="20sp"
         android:textStyle="bold"/>
 
-    <!-- Divider Lines -->
     <View
         android:layout_width="match_parent"
         android:layout_height="8dp"
@@ -79,34 +77,29 @@
         android:layout_height="1dp"
         android:background="@color/black" />
 
-    <!-- ScrollView -->
     <ScrollView
         android:id="@+id/fraghomeScrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingVertical="8dp">
+        <LinearLayout
+            android:id="@+id/fraghomeDevicesListContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        </LinearLayout>
 
 
-    <LinearLayout
-        android:id="@+id/fraghomeDevicesListContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-</LinearLayout>
-
-
-<TextView
-android:id="@+id/fraghomeTipsText1"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
+        <TextView
+            android:id="@+id/fraghomeTipsText1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 android:layout_marginTop="20dp"
 android:layout_marginStart="20dp"
 android:layout_marginEnd="20dp"

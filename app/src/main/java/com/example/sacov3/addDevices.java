@@ -195,7 +195,7 @@ public class addDevices extends AppCompatActivity {
             @NonNull
             @Override
             public IoTDeviceViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_device, parent, false);
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.add_device_template, parent, false);
                 return new IoTDeviceViewHolder(view);
             }
 

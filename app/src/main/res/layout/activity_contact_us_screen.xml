@@ -14,7 +14,6 @@
         android:orientation="vertical"
         android:padding="20dp">
 
-        <!-- Back Button -->
         <TextView
             android:id="@+id/contactUsBack"
             android:layout_width="185dp"
@@ -30,21 +29,18 @@
             app:drawableStartCompat="@drawable/backbutton" />
 
         <LinearLayout
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-            android:background="@drawable/roundbackground"
-        >
-        <TextView
-            android:id="@+id/contactUsText1"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:drawableStartCompat="@drawable/contact"
-            android:layout_gravity="center"/>
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/roundbackground">
             <TextView
-
+                android:id="@+id/contactUsText1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:drawableStartCompat="@drawable/contact"
+                android:layout_gravity="center"/>
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -54,21 +50,19 @@
                 android:text="@string/SACOnumber"
                 android:textAlignment="center"/>
         </LinearLayout>
+
         <LinearLayout
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/roundbackground"
-        >
-        <TextView
-            android:id="@+id/contactUsText2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:drawableStartCompat="@drawable/mail" />
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/roundbackground">
             <TextView
-
+                android:id="@+id/contactUsText2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:drawableStartCompat="@drawable/mail" />
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
